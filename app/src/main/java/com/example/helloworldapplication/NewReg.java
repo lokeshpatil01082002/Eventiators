@@ -66,6 +66,7 @@ public class NewReg extends AppCompatActivity {
         Verify.setVisibility(View.INVISIBLE);
         rotp.setVisibility(View.INVISIBLE);
 
+        Toast.makeText(this, "newly added toast", Toast.LENGTH_SHORT).show();
 
         OTP.setOnClickListener(new View.OnClickListener() {
             @Override
