@@ -16,7 +16,7 @@
         <item
             android:id="@+id/nav_my_profile"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Mail Us" />
+            android:title="Mail Him" />
 
 
     </group>
