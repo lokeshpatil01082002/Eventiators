@@ -55,6 +55,7 @@
         android:layout_marginRight="24dp"
         android:ems="10"
         android:hint="Password"
+        android:textStyle="italic"
         android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="#FFFFFF"
@@ -65,7 +66,7 @@
 
     <Button
         android:id="@+id/btLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="432dp"
         android:layout_marginEnd="12dp"
@@ -80,7 +81,7 @@
 
     <Button
         android:id="@+id/btNew"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="92dp"
         android:background="@color/black"
