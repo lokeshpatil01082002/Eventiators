@@ -87,7 +87,7 @@ public class LogIn extends AppCompatActivity {
                                if (task.isSuccessful()) {
                                    Toast.makeText(LogIn.this, "Successfully Logged-In", Toast.LENGTH_SHORT).show();
                                    bar1.setVisibility(View.GONE);
-                                   Intent i = new Intent(LogIn.this, Home_Screen_Drawer.class);
+                                   Intent i = new Intent(LogIn.this, nav_act_home.class);
                                    startActivity(i);
                                } else {
                                    bar1.setVisibility(View.GONE);

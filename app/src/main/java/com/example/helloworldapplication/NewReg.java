@@ -66,7 +66,6 @@ public class NewReg extends AppCompatActivity {
         Verify.setVisibility(View.INVISIBLE);
         rotp.setVisibility(View.INVISIBLE);
 
-        Toast.makeText(this, "newly added toast", Toast.LENGTH_SHORT).show();
 
         OTP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +155,7 @@ public class NewReg extends AppCompatActivity {
                                 });
                                 Toast.makeText(NewReg.this, "Logged-In ", Toast.LENGTH_SHORT).show();
                                 firebaseAuth.signInWithEmailAndPassword(checkEmail, checkPass);
-                                Intent i = new Intent(NewReg.this, Home_Screen_Drawer.class);
+                                Intent i = new Intent(NewReg.this, HomeScreen.class);
                                 startActivity(i);
                             } else {
                                 Toast.makeText(NewReg.this, "Error !!!" + task.getException(), Toast.LENGTH_SHORT).show();
