@@ -11,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventiators">
+        <activity android:name=".InvitationCard"></activity>
+        <activity android:name=".OrderGifts" />
+        <activity android:name=".OrderCake" />
+        <activity android:name=".AppointPhotographer" />
+        <activity android:name=".AppointChef" />
+        <activity android:name=".DecoreEvents" />
         <activity
             android:name=".nav_act_home"
             android:label="@string/title_activity_nav_act_home"
-            android:theme="@style/Theme.Eventiators.NoActionBar"></activity>
+            android:theme="@style/Theme.Eventiators.NoActionBar" />
         <activity android:name=".admin_home" />
         <activity
             android:name=".Reset"

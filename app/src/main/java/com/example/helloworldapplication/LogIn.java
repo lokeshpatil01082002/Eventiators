@@ -2,6 +2,7 @@ package com.example.helloworldapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -27,6 +29,7 @@ public class LogIn extends AppCompatActivity {
     ProgressBar bar1;
     TextView Forgot;
     FirebaseAuth firebaseAuth;
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,6 @@ public class LogIn extends AppCompatActivity {
         bar1=findViewById(R.id.loginBar);
         Forgot=findViewById(R.id.forgot);
 
-        Toast.makeText(this, "App Requires Internet Connection ", Toast.LENGTH_SHORT).show();
         bar1.setVisibility(View.INVISIBLE);
 
         Forgot.setOnClickListener(new View.OnClickListener() {
