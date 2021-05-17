@@ -11,10 +11,10 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="383dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Mail us your query at - \neventiators.care.2021@gmail.com\n\nPostal Address -\n Governement Polytechnic Pune,\nShivajiNagar,\nPune -411003,\nMaharashtra,\nIndia."
+        android:text="\t\tMail us your query at - \n\t\teventiators.care.2021@gmail.com\n\n\t\tPostal Address -\n \tGovernement Polytechnic Pune,\n\tShivajiNagar,\n\tPune -411003,\n\tMaharashtra,\n\tIndia."
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
