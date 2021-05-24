@@ -155,7 +155,7 @@ public class NewReg extends AppCompatActivity {
                                 });
                                 Toast.makeText(NewReg.this, "Logged-In ", Toast.LENGTH_SHORT).show();
                                 firebaseAuth.signInWithEmailAndPassword(checkEmail, checkPass);
-                                Intent i = new Intent(NewReg.this, HomeScreen.class);
+                                Intent i = new Intent(NewReg.this, nav_act_home.class);
                                 startActivity(i);
                             } else {
                                 Toast.makeText(NewReg.this, "Error !!!" + task.getException(), Toast.LENGTH_SHORT).show();

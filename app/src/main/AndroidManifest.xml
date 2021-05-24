@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventiators">
-        <activity android:name=".InvitationCard"></activity>
+        <activity android:name=".DecoreEventByIntent"></activity>
+        <activity android:name=".InvitationCard" />
         <activity android:name=".OrderGifts" />
         <activity android:name=".OrderCake" />
         <activity android:name=".AppointPhotographer" />
