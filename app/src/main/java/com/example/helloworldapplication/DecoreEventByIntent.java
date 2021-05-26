@@ -96,8 +96,8 @@ ProgressBar bar;
 
                    bar.setVisibility(View.VISIBLE);
 
-
-                   Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_for_event_date, set_price, string_for_event_add);
+                    String status="Submitted ...Waiting To Accpeted ";
+                   Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_for_event_date, set_price, string_for_event_add,status);
 
 
                    String path = "Decoration_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;

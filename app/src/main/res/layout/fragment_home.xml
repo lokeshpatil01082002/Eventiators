@@ -121,7 +121,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Appoint Chef"
+                        android:text="Catering Services"
                         android:textStyle="bold"
                         android:textSize="20dp"
                         android:gravity="center"
