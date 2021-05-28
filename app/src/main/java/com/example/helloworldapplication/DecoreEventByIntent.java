@@ -108,15 +108,12 @@ ProgressBar bar;
                            if (task.isSuccessful()) {
                                bar.setVisibility(View.GONE);
                                Toast.makeText(DecoreEventByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
-                               Intent i = new Intent(DecoreEventByIntent.this, nav_act_home.class);
-                               startActivity(i);
 
 
                            } else {
                                bar.setVisibility(View.GONE);
                                Toast.makeText(DecoreEventByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
-                               Intent i = new Intent(DecoreEventByIntent.this, nav_act_home.class);
-                               startActivity(i);
+
                            }
                        }
                    });

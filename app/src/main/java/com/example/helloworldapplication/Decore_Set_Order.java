@@ -7,7 +7,31 @@ public class Decore_Set_Order {
     public Decore_Set_Order() {
     }
 
-    public Decore_Set_Order(String set_code, String set_name, String set_date, String set_price, String set_add,String status) {
+    public String getSet_code() {
+        return set_code;
+    }
+
+    public String getSet_name() {
+        return set_name;
+    }
+
+    public String getSet_date() {
+        return set_date;
+    }
+
+    public String getSet_price() {
+        return set_price;
+    }
+
+    public String getSet_add() {
+        return set_add;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Decore_Set_Order(String set_code, String set_name, String set_date, String set_price, String set_add, String status) {
         this.set_code = set_code;
         this.set_name = set_name;
         this.set_date = set_date;
