@@ -29,7 +29,7 @@ public class LogIn extends AppCompatActivity {
     ProgressBar bar1;
     TextView Forgot;
     FirebaseAuth firebaseAuth;
-    CoordinatorLayout coordinatorLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

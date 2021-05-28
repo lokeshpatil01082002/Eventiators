@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.helloworldapplication.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -101,20 +102,20 @@ ProgressBar bar;
 
 
                    String path = "Decoration_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;
-                   FirebaseDatabase.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+                   db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
                            if (task.isSuccessful()) {
                                bar.setVisibility(View.GONE);
                                Toast.makeText(DecoreEventByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
-                               Intent i = new Intent(DecoreEventByIntent.this, DecoreEvents.class);
+                               Intent i = new Intent(DecoreEventByIntent.this, nav_act_home.class);
                                startActivity(i);
 
 
                            } else {
                                bar.setVisibility(View.GONE);
                                Toast.makeText(DecoreEventByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
-                               Intent i = new Intent(DecoreEventByIntent.this, DecoreEvents.class);
+                               Intent i = new Intent(DecoreEventByIntent.this, nav_act_home.class);
                                startActivity(i);
                            }
                        }
