@@ -67,6 +67,14 @@ public class NewReg extends AppCompatActivity {
         rotp.setVisibility(View.INVISIBLE);
 
 
+
+
+
+
+
+
+
+
         OTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,8 +134,8 @@ public class NewReg extends AppCompatActivity {
                 if (checkEmail.isEmpty()) {
                     REditMail.setError("Email Required");
                     REditMail.requestFocus();
-                } else if (checkPhone.isEmpty()&&Verify.getText().toString()!="Verified") {
-                    REditPhone.setError("Phone No Required");
+                } else if (!(checkPhone.length() ==10) && !Verify.getText().toString().equals("Verified")) {
+                    REditPhone.setError("Phone No Required to be verified !!");
                     REditPhone.requestFocus();
                 }
 
@@ -137,7 +145,12 @@ public class NewReg extends AppCompatActivity {
                 } else if (checkDist.isEmpty()) {
                     REditDist.setError("District Required");
                     REditDist.requestFocus();
-                } else if (!checkName.isEmpty() && !checkPass.isEmpty() && !checkEmail.isEmpty() && !checkPhone.isEmpty() && !checkAdd.isEmpty() && !checkDist.isEmpty()) {
+                }
+                else if(!checkName.matches("^[a-zA-Z\\s]*$")){
+                    REditName.setError("Only Alphabets Are Allowed");
+                    REditName.requestFocus();
+                }
+                else if (!checkName.isEmpty() && !checkPass.isEmpty() && !checkEmail.isEmpty() && !checkPhone.isEmpty() && !checkAdd.isEmpty() && !checkDist.isEmpty()&& Verify.getText().toString().equals("Verified")) {
 
                     firebaseAuth.createUserWithEmailAndPassword(checkEmail, checkPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -163,6 +176,9 @@ public class NewReg extends AppCompatActivity {
                             }
                         }
                     });
+                }
+                else{
+                    Toast.makeText(NewReg.this, "Phone Number is yet to verify", Toast.LENGTH_SHORT).show();
                 }
 
 
