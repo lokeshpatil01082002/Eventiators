@@ -7,7 +7,7 @@
     app:cardCornerRadius="5dp"
     android:layout_margin="5dp"
     android:layout_marginBottom="25dp"
-    android:background="@android:color/holo_orange_dark"
+
    >
 
     <LinearLayout
@@ -60,7 +60,7 @@
                 android:id="@+id/tv_set_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+
                 android:text=""
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -133,7 +133,7 @@
                 android:id="@+id/tv_event_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+
                 android:text=""
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -142,7 +142,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
