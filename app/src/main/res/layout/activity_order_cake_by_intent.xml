@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderCakeByIntent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/holo_red_light">
+
+
+
+
+        <GridLayout
+            android:id="@+id/order_cake_intent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:rowCount="1"
+            android:minHeight="800dp"
+            android:columnOrderPreserved="false"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="334dp"
+                        android:layout_height="280dp"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/imageinintent_cake"
+                        />
+                    <TextView
+                        android:id="@+id/cake_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cake Name :"
+                        android:textStyle="bold"
+                        android:layout_marginTop="25dp"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:id="@+id/cake_id"
+                        android:textStyle="bold"
+                        android:layout_marginTop="25dp"
+                        android:text="Cake Code"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        />
+                    <TextView
+                        android:id="@+id/cake_Price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Price "
+                        android:textStyle="bold"
+                        android:layout_marginTop="25dp"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/cake_dis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:text="Description Box"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_cake"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="139dp"
+                        android:layout_height="37dp"
+                        android:layout_gravity="center" />
+                    <EditText
+                        android:id="@+id/edittext_for_cake_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:ems="10"
+                        android:hint="Message To Write On Cake"
+                        android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/edittext_for_quantity_cake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:ems="10"
+                        android:hint="Enter Quantity [In Kgs.]"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/edittext_for_date_cake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:ems="10"
+                        android:hint="Enter Date OF Your Event [dd/mm/yyyy]"
+                        android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/editText_for_add_cake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:hint="Enter Address Of Event  " />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_marginTop="25dp"
+                        android:id="@+id/button_for_order_cake"
+                        android:text="Order Cake"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>
