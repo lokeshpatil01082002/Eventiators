@@ -1,13 +1,21 @@
 package com.example.helloworldapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -45,6 +53,58 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
         holder.tv_cake_status1.setText(order.getCake_status());
         holder.tv_cake_quant.setText(order.getCake_quantity());
 
+        holder.tv_cake_order_id.setText(order.getOrder_id());
+
+
+        holder.cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String order_id=holder.tv_cake_order_id.getText().toString();
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("Order Updation");
+                builder.setMessage("Do you really want to cancel these order ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes,Cancel order", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseReference ref;
+                        ref= FirebaseDatabase.getInstance().getReference("Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child(order_id);
+                        ref.setValue(null);
+                        holder.cancel.setVisibility(View.INVISIBLE);
+
+                        holder.tv_cake_order_id.setTextColor(Color.RED);
+                        holder.tv_cake_id1.setTextColor(Color.RED);   holder.tv_cake_name1.setTextColor(Color.RED);
+                        holder.tv_cake_price1.setTextColor(Color.RED);   holder.tv_cake_quant.setTextColor(Color.RED);
+                        holder.tv_cake_mseg.setTextColor(Color.RED);   holder.tv_cake_add1.setTextColor(Color.RED);
+                        holder.tv_cake_date1.setTextColor(Color.RED);
+                        holder.tv_cake_status1.setTextColor(Color.RED);
+
+                    }
+                });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+
+                    }
+                });
+                builder.create().show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -56,8 +116,8 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
-        TextView tv_cake_id1,tv_cake_name1,tv_cake_price1,tv_cake_add1,tv_cake_status1,tv_cake_date1,tv_cake_quant,tv_cake_mseg;
-
+        TextView tv_cake_id1,tv_cake_name1,tv_cake_price1,tv_cake_add1,tv_cake_status1,tv_cake_date1,tv_cake_quant,tv_cake_mseg,tv_cake_order_id;
+        Button cancel;
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
 
@@ -69,6 +129,10 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
           tv_cake_price1=itemView.findViewById(R.id.tv_cake_price);
           tv_cake_status1=itemView.findViewById(R.id.tv_order_status);
           tv_cake_quant=itemView.findViewById(R.id.tv_cake_quant);
+          tv_cake_order_id=itemView.findViewById(R.id.tv_order_cake_order_id);
+
+
+          cancel=itemView.findViewById(R.id.button_to_cancel_cake_order);
 
         }
     }

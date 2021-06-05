@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventiators">
-        <activity android:name=".OrderCakeByIntent"></activity>
+        <activity android:name=".photographerByIntent"></activity>
+        <activity android:name=".OrderCakeByIntent" />
         <activity android:name=".View_Gift_orders" />
         <activity android:name=".View_cake_orders" />
         <activity android:name=".View_catering_service_orders" />

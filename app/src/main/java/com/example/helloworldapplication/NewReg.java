@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
@@ -156,9 +157,11 @@ public class NewReg extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                firebaseAuth.signInWithEmailAndPassword(checkEmail, checkPass);
+                                String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                User user = new User(checkName, checkEmail, checkPhone, checkAdd, checkDist,uid);
 
-                                User user = new User(checkName, checkEmail, checkPhone, checkAdd, checkDist);
-                                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference("Users").child("+91"+checkPhone).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
@@ -167,7 +170,7 @@ public class NewReg extends AppCompatActivity {
                                     }
                                 });
                                 Toast.makeText(NewReg.this, "Logged-In ", Toast.LENGTH_SHORT).show();
-                                firebaseAuth.signInWithEmailAndPassword(checkEmail, checkPass);
+
                                 Intent i = new Intent(NewReg.this, nav_act_home.class);
                                 startActivity(i);
                             } else {

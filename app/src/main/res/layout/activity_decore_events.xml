@@ -28,7 +28,7 @@
             android:columnOrderPreserved="false"
             android:padding="14dp">
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
@@ -72,7 +72,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
@@ -116,7 +116,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
@@ -160,7 +160,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
@@ -204,7 +204,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
@@ -248,7 +248,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:layout_width="300dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"

@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderCakeByIntent">
+    tools:context=".photographerByIntent">
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +18,7 @@
 
 
         <GridLayout
-            android:id="@+id/order_cake_intent_layout"
+            android:id="@+id/decore_event_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alignmentMode="alignMargins"
@@ -45,13 +48,13 @@
                         android:layout_width="334dp"
                         android:layout_height="280dp"
                         android:layout_gravity="center_vertical"
-                        android:id="@+id/imageinintent_cake"
+                        android:id="@+id/photographerimageinintent"
                         />
                     <TextView
-                        android:id="@+id/cake_name"
+                        android:id="@+id/photographer_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cake Name :"
+                        android:text="Type"
                         android:textStyle="bold"
                         android:layout_marginTop="25dp"
                         android:textSize="20dp"
@@ -62,19 +65,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20dp"
-                        android:id="@+id/cake_id"
+                        android:id="@+id/photographer_code"
                         android:textStyle="bold"
                         android:layout_marginTop="25dp"
-                        android:text="Cake Code"
+                        android:text="Code"
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:textAlignment="center"
                         />
                     <TextView
-                        android:id="@+id/cake_Price"
+                        android:id="@+id/photographer_Price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Price "
+                        android:text="Price Charge"
                         android:textStyle="bold"
                         android:layout_marginTop="25dp"
                         android:textSize="20dp"
@@ -83,7 +86,7 @@
                         android:textAlignment="center"/>
 
                     <TextView
-                        android:id="@+id/cake_dis"
+                        android:id="@+id/photographer_dis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
@@ -92,20 +95,20 @@
                         android:textSize="20dp"
                         />
 
-
-                    <EditText
-                        android:id="@+id/edittext_for_cake_message"
+                    <TextView
+                        android:id="@+id/photographer_includes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
-                        android:ems="10"
-                        android:hint="Message To Write On Cake"
-                        android:inputType="textPersonName" />
+                        android:text="Description Box"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Quantity -"
+                        android:text="Requirement For -"
                         android:textStyle="bold"
                         android:textSize="15dp"
                         android:textColor="@color/black"/>
@@ -113,24 +116,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        >
-                        <RadioButton android:id="@+id/radio_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0.5 KG"
+                     >
+                    <RadioButton android:id="@+id/radio_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 Day OR 1 Hour"
 
-                            android:onClick="onRadioButtonClicked"/>
-                        <RadioButton android:id="@+id/radio_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1 KG"
-                            android:onClick="onRadioButtonClicked"/>
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton android:id="@+id/radio_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Days OR 2 Hours"
+                        android:onClick="onRadioButtonClicked"/>
                         <RadioButton android:id="@+id/radio_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2 KG"
+                            android:text="3 Day OR 3 Hour"
                             android:onClick="onRadioButtonClicked"/>
                     </RadioGroup>
+
+
+
+
 
 
                     <RelativeLayout
@@ -160,21 +167,21 @@
                             android:scaleY=".7"
                             android:calendarTextColor="#D500F9"
                             android:datePickerMode="calendar"
-                            android:id="@+id/datePickercake" />
+                            android:id="@+id/datePicker" />
 
                         <Button
                             android:text="Get This Date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/datePickercake"
+                            android:layout_below="@+id/datePicker"
                             android:layout_marginTop="-25dp"
                             android:layout_centerHorizontal="true"
-                            android:id="@+id/button_to_display_date_cake" />
+                            android:id="@+id/button_to_display_date" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/button_to_display_date_cake"
+                            android:layout_below="@+id/button_to_display_date"
                             android:layout_marginTop="20dp"
                             android:textSize="24sp"
                             android:text="DATE -"
@@ -184,16 +191,24 @@
                     </RelativeLayout>
 
 
+
+
+
+
+
+
+
+
                     <EditText
-                        android:id="@+id/editText_for_add_cake"
+                        android:id="@+id/photographer_order_event_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:hint="Enter Address Of Event  " />
+                        android:hint="Enter Full  Address   " />
                     <ProgressBar
-                        android:id="@+id/progressBar_cake"
+                        android:id="@+id/progressBar_photographer"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="139dp"
                         android:layout_height="37dp"
@@ -204,8 +219,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
                         android:layout_marginTop="25dp"
-                        android:id="@+id/button_for_order_cake"
-                        android:text="Order Cake"/>
+                        android:id="@+id/button_for_appoint_photographer"
+                        android:text="Appoint Photographer"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -215,5 +230,9 @@
 
         </GridLayout>
     </LinearLayout>
+
+
+
+
 
 </ScrollView>

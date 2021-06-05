@@ -34,6 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         User user = list.get(position);
+        holder.userid.setText(user.getUid());
         holder.name.setText(user.getName());
         holder.phone.setText(user.getPhone());
         holder.address.setText(user.getAdd());
@@ -49,11 +50,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name,phone,address,email;
+        TextView name,phone,address,email,userid;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            userid=itemView.findViewById(R.id.tvUidAdmin);
             name = itemView.findViewById(R.id.tvNameAdmin);
             phone = itemView.findViewById(R.id.tvPhoneAdmin);
             address = itemView.findViewById(R.id.tvaddressAdmin);

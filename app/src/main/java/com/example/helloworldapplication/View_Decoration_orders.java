@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class View_Decoration_orders extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,16 @@ public class View_Decoration_orders extends AppCompatActivity {
         MyAdapterForDecorationOrder myAdapter;
         ArrayList<Decore_Set_Order> list;
         recyclerView = findViewById(R.id.decoration_order);
-        database = FirebaseDatabase.getInstance().getReference("Decoration_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+
+
+
+
+
+
+
+
+        database = FirebaseDatabase.getInstance().getReference("Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

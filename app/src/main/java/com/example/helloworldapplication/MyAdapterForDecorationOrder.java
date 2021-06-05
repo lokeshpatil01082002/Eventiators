@@ -1,15 +1,25 @@
 package com.example.helloworldapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.helloworldapplication.ui.my_order.my_orderFragment;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -40,12 +50,64 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
     public void onBindViewHolder(@NonNull MyViewHolder2 holder, int position) {
 
         Decore_Set_Order order = list.get(position);
+        holder.tv_order_id1.setText(order.getOrder_id());
         holder.tv_set_id1.setText(order.getSet_code());
         holder.tv_set_name1.setText(order.getSet_name());
         holder.tv_set_price1.setText(order.getSet_price());
         holder.tv_set_add1.setText(order.getSet_add());
         holder.tv_set_status1.setText(order.getStatus());
         holder.tv_set_date1.setText(order.getSet_date());
+
+
+        holder.cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String order_id=holder.tv_order_id1.getText().toString();
+
+
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("Order Updation");
+                builder.setMessage("Do you really want to cancel these order ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes,Cancel order", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        DatabaseReference ref;
+                        ref= FirebaseDatabase.getInstance().getReference("Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child(order_id);
+                        ref.setValue(null);
+
+                        holder.tv_set_status1.setTextColor(Color.RED);
+                        holder.tv_order_id1.setTextColor(Color.RED);
+                        holder.tv_set_price1.setTextColor(Color.RED);
+                        holder.tv_set_add1.setTextColor(Color.RED);
+                        holder.tv_set_id1.setTextColor(Color.RED);
+                        holder.tv_set_date1.setTextColor(Color.RED);
+
+
+                        holder.cancel.setVisibility(View.INVISIBLE);
+
+
+                    }
+                });
+
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+                builder.create().show();
+
+            }
+        });
+
 
 
 
@@ -58,7 +120,9 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
-        TextView tv_set_id1,tv_set_name1,tv_set_price1,tv_set_add1,tv_set_status1,tv_set_date1;
+        TextView tv_set_id1,tv_set_name1,tv_set_price1,tv_set_add1,tv_set_status1,tv_set_date1,tv_order_id1;
+        Button cancel;
+
 
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -69,7 +133,10 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
             tv_set_add1=itemView.findViewById(R.id.tv_event_address);
             tv_set_status1=itemView.findViewById(R.id.tv_order_status);
             tv_set_date1=itemView.findViewById(R.id.tv_date_event);
+            tv_order_id1=itemView.findViewById(R.id.tv_decore_order_id);
 
+
+            cancel=itemView.findViewById(R.id.button_to_cancel_decore_order);
         }
     }
 

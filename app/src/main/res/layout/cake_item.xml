@@ -13,6 +13,31 @@
         android:layout_marginLeft="16dp"
 
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order  Id :"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_order_cake_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cake Order Id :"
+                android:text="Cake  Id :"
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 android:textStyle="bold"/>
@@ -209,6 +234,12 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel Order"
+            android:id="@+id/button_to_cancel_cake_order"/>
+
 
     </LinearLayout>
 

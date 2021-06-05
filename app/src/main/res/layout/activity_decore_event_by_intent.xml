@@ -93,21 +93,53 @@
             android:textSize="20dp"
              />
 
-        <ProgressBar
-            android:id="@+id/progressBar_decore"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="139dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center" />
 
-        <EditText
-            android:id="@+id/edittext_for_date"
+
+        <RelativeLayout
+
+            android:id="@+id/relative_layout_for_calender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:ems="10"
-            android:hint="Enter Date OF Your Event [dd/mm/yyyy]"
-            android:inputType="textPersonName" />
+            >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date Of Your Event"/>
+
+
+         <DatePicker
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="-25dp"
+                            android:scaleX=".9"
+                            android:scaleY=".7"
+                            android:calendarTextColor="#D500F9"
+                            android:datePickerMode="calendar"
+                            android:id="@+id/datePicker" />
+
+                        <Button
+                            android:text="Get This Date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/datePicker"
+                            android:layout_marginTop="-25dp"
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/button_to_display_date" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/button_to_display_date"
+                            android:layout_marginTop="20dp"
+                            android:textSize="24sp"
+
+                            android:id="@+id/textview_for_date_text"
+                            android:gravity="center"/>
+
+        </RelativeLayout>
+
+
         <EditText
             android:id="@+id/editText_for_add"
             android:layout_width="match_parent"
@@ -116,6 +148,12 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Enter Address Of Event  " />
+        <ProgressBar
+            android:id="@+id/progressBar_decore"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="139dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center" />
 
         <Button
             android:layout_width="match_parent"

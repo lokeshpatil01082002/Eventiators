@@ -3,12 +3,16 @@ package com.example.helloworldapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +23,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class OrderCakeByIntent extends AppCompatActivity {
     ImageView imageView_cake_view;
-    TextView cake_name_tx,cake_price_tx,cake_dis_tx,cake_code_tx;
+    TextView cake_name_tx,cake_price_tx,cake_dis_tx,cake_code_tx,tv;
 
-    Button order_cake_button;
-    EditText ed_cake_add,ed_cake_date,ed_cake_message,ed_cake_quantity;
+    Button order_cake_button,b1;
+    DatePicker dp;
+    EditText ed_cake_add,ed_cake_message;
     FirebaseDatabase db;
     FirebaseAuth auth;
     ProgressBar bar;
+    String check_for_quant="0.5";
+    String string_date;
 
 
     @Override
@@ -36,9 +43,9 @@ public class OrderCakeByIntent extends AppCompatActivity {
         imageView_cake_view=findViewById(R.id.imageinintent_cake);
 
         ed_cake_add=findViewById(R.id.editText_for_add_cake);
-        ed_cake_date=findViewById(R.id.edittext_for_date_cake);
+
         ed_cake_message=findViewById(R.id.edittext_for_cake_message);
-        ed_cake_quantity=findViewById(R.id.edittext_for_quantity_cake);
+
 
         cake_name_tx=findViewById(R.id.cake_name);
         cake_price_tx=findViewById(R.id.cake_Price);
@@ -73,33 +80,168 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
 
 
+        dp = (DatePicker) findViewById(R.id.datePickercake);
+        b1 = (Button) findViewById(R.id.button_to_display_date_cake);
+        tv = (TextView) findViewById(R.id.textview);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuffer sb = new StringBuffer();
+                sb.append(dp.getDayOfMonth() + "/");
+                sb.append((dp.getMonth() + 1) + "/");
+                sb.append(dp.getYear());
+
+                tv.setText(sb.toString());
+
+                string_date=sb.toString();
+            }
+        });
+
+
         order_cake_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
                 long time=System.currentTimeMillis();
-                String string_for_event_date=ed_cake_date.getText().toString();
+                String time_string = time+"";
+
                 String string_for_event_add=ed_cake_add.getText().toString();
-                String string_for_quantity=ed_cake_quantity.getText().toString();
+
                 String string_for_message=ed_cake_message.getText().toString();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 if(string_for_event_add.isEmpty())
                 {
                     ed_cake_add.setError("Enter Full Address");
                     ed_cake_add.requestFocus();
                 }
-                else if(string_for_event_date.isEmpty())
-                {
-                    ed_cake_date.setError("Enter Date Of Event");
-                    ed_cake_date.requestFocus();
-                }
-                else if(!string_for_event_add.isEmpty() && !string_for_event_date.isEmpty()) {
 
-                    bar.setVisibility(View.VISIBLE);
+                else if(!string_for_event_add.isEmpty() ) {
+
+
+
+                    AlertDialog.Builder builder=new AlertDialog.Builder(OrderCakeByIntent.this);
+                    builder.setTitle("Order Confirmation");
+                    builder.setMessage("Do you want to confirm your order ?");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("Yes,Comfirm", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+
+
+
+
+
+
+                            bar.setVisibility(View.VISIBLE);
+
+                            String status="Submitted ...Waiting To Accpeted ";
+                            CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,check_for_quant,string_date,cake_price,string_for_event_add,status,time_string);
+
+
+                            String path = "Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;
+                            db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        bar.setVisibility(View.GONE);
+                                        //Toast.makeText(OrderCakeByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
+
+
+
+                                        AlertDialog.Builder builder_new=new AlertDialog.Builder(OrderCakeByIntent.this);
+                                        builder_new.setTitle("Order Execution");
+                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\nThank you for ordering !");
+                                        builder.setCancelable(false);
+
+                                        builder_new.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+
+                                        builder_new.create().show();
+
+
+
+
+
+
+
+
+
+
+                                    } else {
+                                        bar.setVisibility(View.GONE);
+                                        Toast.makeText(OrderCakeByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        }
+                    });
+                    builder.setNegativeButton("Recheck", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+                    builder.create().show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  /*  bar.setVisibility(View.VISIBLE);
 
                     String status="Submitted ...Waiting To Accpeted ";
-                    CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,string_for_quantity,string_for_event_date,cake_price,string_for_event_add,status);
+                    CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,check_for_quant,string_date,cake_price,string_for_event_add,status,time_string);
 
 
                     String path = "Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;
@@ -119,6 +261,8 @@ public class OrderCakeByIntent extends AppCompatActivity {
                         }
                     });
 
+                   */
+
                 }
             }
 
@@ -127,4 +271,34 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
 
     }
+
+
+    public void onRadioButtonClicked (View  view) {
+
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.radio_1:
+                if (checked)
+                    check_for_quant = "0.5";
+
+                break;
+            case R.id.radio_2:
+                if (checked)
+                    check_for_quant = "1";
+                break;
+            case R.id.radio_3:
+                if (checked)
+                    check_for_quant = "2";
+                break;
+
+        }
+    }
+
+
+
+
+
 }

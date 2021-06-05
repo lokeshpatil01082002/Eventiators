@@ -1,13 +1,16 @@
 package com.example.helloworldapplication;
 
 public class User {
-    public String name,email,phone,add,dist;
+    public String name,email,phone,add,dist,uid;
     public User() {
     }
 
 
     public String getName() {
         return name;
+    }
+    public String getUid() {
+        return uid;
     }
 
     public String getEmail() {
@@ -26,8 +29,9 @@ public class User {
         return dist;
     }
 
-    public User(String name, String email, String phone, String add, String dist){
+    public User(String name, String email, String phone, String add, String dist,String uid){
         this.name=name;
+        this.uid=uid;
         this.email=email;
         this.phone=phone;
         this.add=add;
