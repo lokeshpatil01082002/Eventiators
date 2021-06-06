@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class DecoreEventByIntent extends AppCompatActivity {
     ImageView imageView;
     TextView set_name_tx,price,dis_tx,code,tv;
@@ -81,9 +83,14 @@ public class DecoreEventByIntent extends AppCompatActivity {
 
 
 
+
         dp = (DatePicker) findViewById(R.id.datePicker);
         b1 = (Button) findViewById(R.id.button_to_display_date);
         tv = (TextView) findViewById(R.id.textview_for_date_text);
+        Calendar today = Calendar.getInstance();
+        long now = today.getTimeInMillis();
+        dp.setMinDate(now);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +168,7 @@ public class DecoreEventByIntent extends AppCompatActivity {
 
                                         AlertDialog.Builder builder_new=new AlertDialog.Builder(DecoreEventByIntent.this);
                                         builder_new.setTitle("Order Execution");
-                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\nThank you for ordering !");
+                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\n.You can pay at time of service delievery\nThank you for ordering !");
                                         builder.setCancelable(false);
 
                                         builder_new.setNeutralButton("OK", new DialogInterface.OnClickListener() {

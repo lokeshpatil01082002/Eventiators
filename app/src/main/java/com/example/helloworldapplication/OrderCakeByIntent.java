@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+
 public class OrderCakeByIntent extends AppCompatActivity {
     ImageView imageView_cake_view;
     TextView cake_name_tx,cake_price_tx,cake_dis_tx,cake_code_tx,tv;
@@ -83,6 +85,10 @@ public class OrderCakeByIntent extends AppCompatActivity {
         dp = (DatePicker) findViewById(R.id.datePickercake);
         b1 = (Button) findViewById(R.id.button_to_display_date_cake);
         tv = (TextView) findViewById(R.id.textview);
+
+        Calendar today = Calendar.getInstance();
+        long now = today.getTimeInMillis();
+        dp.setMinDate(now);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +177,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
                                         AlertDialog.Builder builder_new=new AlertDialog.Builder(OrderCakeByIntent.this);
                                         builder_new.setTitle("Order Execution");
-                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted ,order will be delievered to your address \nThank you for ordering !");
+                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted ,order will be delievered to your address. \nYou can pay on deleivery\nThank you for ordering !");
                                         builder.setCancelable(false);
 
                                         builder_new.setNeutralButton("OK", new DialogInterface.OnClickListener() {

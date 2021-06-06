@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.cert.Extension;
+import java.util.Calendar;
 
 import static android.widget.Toast.*;
 
@@ -80,9 +81,16 @@ public class photographerByIntent extends AppCompatActivity {
 
 
 
+
         dp = (DatePicker) findViewById(R.id.datePicker);
         b1 = (Button) findViewById(R.id.button_to_display_date);
         tv = (TextView) findViewById(R.id.textview);
+
+
+        Calendar today = Calendar.getInstance();
+        long now = today.getTimeInMillis();
+        dp.setMinDate(now);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +162,7 @@ public class photographerByIntent extends AppCompatActivity {
 
                                         AlertDialog.Builder builder_new=new AlertDialog.Builder(photographerByIntent.this);
                                         builder_new.setTitle("Booking Execution");
-                                        builder_new.setMessage("Your booking has been done successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\nThank you for booking !");
+                                        builder_new.setMessage("Your booking has been done successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\nYou can pay at time of service delievery\nThank you for booking !");
                                         builder.setCancelable(false);
 
                                         builder_new.setNeutralButton("OK", new DialogInterface.OnClickListener() {
