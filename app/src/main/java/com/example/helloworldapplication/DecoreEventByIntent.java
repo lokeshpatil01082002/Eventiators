@@ -32,12 +32,12 @@ public class DecoreEventByIntent extends AppCompatActivity {
     TextView set_name_tx,price,dis_tx,code,tv;
 
     Button order_set_button,b1;
-    EditText edit_add,edit_date;
+    EditText edit_add;
     FirebaseDatabase db;
     FirebaseAuth auth;
     ProgressBar bar;
     DatePicker dp;
-    String string_date ;
+    String string_date="" ;
 
 
 
@@ -168,6 +168,10 @@ public class DecoreEventByIntent extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
+
+                                                finish();
+
+
                                             }
                                         });
 

@@ -1,5 +1,6 @@
 package com.example.helloworldapplication;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import static java.security.AccessController.getContext;
 
 
 public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterForDecorationOrder.MyViewHolder2> {
@@ -80,17 +82,22 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
                         ref= FirebaseDatabase.getInstance().getReference("Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child(order_id);
                         ref.setValue(null);
 
-                        holder.tv_set_status1.setTextColor(Color.RED);
-                        holder.tv_order_id1.setTextColor(Color.RED);
-                        holder.tv_set_price1.setTextColor(Color.RED);
-                        holder.tv_set_add1.setTextColor(Color.RED);
-                        holder.tv_set_id1.setTextColor(Color.RED);
-                        holder.tv_set_date1.setTextColor(Color.RED);
+                        AlertDialog.Builder builder2=new AlertDialog.Builder(context);
+                        builder2.setTitle("Order Cancellation");
+                        builder2.setMessage("Your Order Has Been Cancelled  Successfully !");
+                        builder2.setCancelable(false);
+                        builder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
 
-                        holder.cancel.setVisibility(View.INVISIBLE);
+                                ((Activity)context).finish();
 
 
+
+                            }
+                        });
+                        builder2.create().show();
                     }
                 });
 
@@ -137,6 +144,7 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
 
 
             cancel=itemView.findViewById(R.id.button_to_cancel_decore_order);
+
         }
     }
 

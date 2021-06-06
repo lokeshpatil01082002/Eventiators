@@ -1,7 +1,11 @@
 package com.example.helloworldapplication;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -81,5 +85,80 @@ public class nav_act_home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+   /* public void onBackPressed() {
+
+
+        super.onBackPressed();
+
+        AlertDialog.Builder builder2=new AlertDialog.Builder(nav_act_home.this);
+        builder2.setTitle("Exit");
+        builder2.setMessage("Do you really want to log-out ?");
+        builder2.setCancelable(false);
+        builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                FirebaseAuth.getInstance().signOut();
+                finish();
+
+
+
+            }
+        });
+        builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert=builder2.create();
+        alert.show();
+
+    }
+
+    */
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey();
+
+            //moveTaskToBack(false);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(this)
+                .setMessage("Do you want to LogOut?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        finish();
+
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+
+
+                })
+                .show();
+
     }
 }

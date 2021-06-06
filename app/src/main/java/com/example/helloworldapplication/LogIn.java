@@ -44,6 +44,12 @@ public class LogIn extends AppCompatActivity {
 
         bar1.setVisibility(View.INVISIBLE);
 
+
+
+
+
+
+
         Forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,5 +108,19 @@ public class LogIn extends AppCompatActivity {
                }
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        EditMail.setText("");
+        EditPass.setText("");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EditMail.setText("");
+        EditPass.setText("");
     }
 }

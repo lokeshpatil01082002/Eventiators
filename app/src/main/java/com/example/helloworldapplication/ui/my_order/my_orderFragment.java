@@ -63,6 +63,7 @@ public class my_orderFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), View_Decoration_orders.class);
                 startActivity(i);
+
             }
         });
 

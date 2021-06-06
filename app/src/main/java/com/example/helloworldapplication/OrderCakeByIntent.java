@@ -32,7 +32,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressBar bar;
     String check_for_quant="0.5";
-    String string_date;
+    String string_date="";
 
 
     @Override
@@ -131,8 +131,11 @@ public class OrderCakeByIntent extends AppCompatActivity {
                     ed_cake_add.setError("Enter Full Address");
                     ed_cake_add.requestFocus();
                 }
+                else if(string_date.isEmpty()){
+                    Toast.makeText(OrderCakeByIntent.this, "Select Date ", Toast.LENGTH_SHORT).show();
+                }
 
-                else if(!string_for_event_add.isEmpty() ) {
+                else if(!string_for_event_add.isEmpty() && !string_date.isEmpty()) {
 
 
 
@@ -175,6 +178,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
+                                                finish();
                                             }
                                         });
 

@@ -40,9 +40,11 @@ public class Reset extends AppCompatActivity {
                             public void onComplete(@NonNull Task task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Reset.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 } else {
 
                                     Toast.makeText(Reset.this, "Error !!!"+ task.getException(), Toast.LENGTH_SHORT).show();
+                                    finish();
 
                                 }
                             }

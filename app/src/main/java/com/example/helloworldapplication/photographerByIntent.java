@@ -34,7 +34,7 @@ public class photographerByIntent extends AppCompatActivity {
     EditText event_address;
     ImageView imageView;
     ProgressBar pbar;
-    String string_date;
+    String string_date="";
 
 
     @Override
@@ -111,7 +111,10 @@ public class photographerByIntent extends AppCompatActivity {
                     event_address.setError("Address Required !");
                     event_address.requestFocus();
                 }
-                else {
+                else if(string_date.isEmpty()){
+                    makeText(photographerByIntent.this, "Select Date", LENGTH_SHORT).show();
+                }
+                else if(!string_for_event_address.isEmpty() && ! string_date.isEmpty()) {
 
 
 
@@ -158,6 +161,7 @@ public class photographerByIntent extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.dismiss();
+                                                finish();
                                             }
                                         });
 

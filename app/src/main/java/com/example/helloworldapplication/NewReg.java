@@ -161,7 +161,7 @@ public class NewReg extends AppCompatActivity {
                                 String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 User user = new User(checkName, checkEmail, checkPhone, checkAdd, checkDist,uid);
 
-                                FirebaseDatabase.getInstance().getReference("Users").child("+91"+checkPhone).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                FirebaseDatabase.getInstance().getReference("Users").child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
@@ -173,6 +173,7 @@ public class NewReg extends AppCompatActivity {
 
                                 Intent i = new Intent(NewReg.this, nav_act_home.class);
                                 startActivity(i);
+                                finish();
                             } else {
                                 Toast.makeText(NewReg.this, "Error !!!" + task.getException(), Toast.LENGTH_SHORT).show();
 

@@ -13,7 +13,14 @@
         android:background="@android:color/holo_red_light">
 
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:text="Select Cake For Order"
+            android:textColor="@color/black"
+            android:background="@android:color/holo_blue_bright"
+            android:gravity="center"/>
 
         <GridLayout
             android:id="@+id/order_cake_layout"

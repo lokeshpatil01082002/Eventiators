@@ -1,5 +1,6 @@
 package com.example.helloworldapplication;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -72,14 +73,27 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
                         DatabaseReference ref;
                         ref= FirebaseDatabase.getInstance().getReference("Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child(order_id);
                         ref.setValue(null);
-                        holder.cancel.setVisibility(View.INVISIBLE);
 
-                        holder.tv_cake_order_id.setTextColor(Color.RED);
-                        holder.tv_cake_id1.setTextColor(Color.RED);   holder.tv_cake_name1.setTextColor(Color.RED);
-                        holder.tv_cake_price1.setTextColor(Color.RED);   holder.tv_cake_quant.setTextColor(Color.RED);
-                        holder.tv_cake_mseg.setTextColor(Color.RED);   holder.tv_cake_add1.setTextColor(Color.RED);
-                        holder.tv_cake_date1.setTextColor(Color.RED);
-                        holder.tv_cake_status1.setTextColor(Color.RED);
+
+                        AlertDialog.Builder builder2=new AlertDialog.Builder(context);
+                        builder2.setTitle("Order Cancellation");
+                        builder2.setMessage("Your Order Has Been Cancelled  Successfully !");
+                        builder2.setCancelable(false);
+                        builder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                                ((Activity)context).finish();
+
+
+
+                            }
+                        });
+                        builder2.create().show();
+
+
+
 
                     }
                 });

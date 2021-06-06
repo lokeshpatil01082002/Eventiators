@@ -14,7 +14,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@android:color/holo_red_light">
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:text="Select Photographer As Your Event"
+                android:textColor="@color/black"
+                android:background="@android:color/holo_blue_bright"
+                android:gravity="center"/>
 
 
 

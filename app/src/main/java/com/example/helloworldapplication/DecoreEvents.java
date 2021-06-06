@@ -34,6 +34,7 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
                         j.putExtra("price","15000 Rs.");
                         startActivity(j);
+                        finish();
 
                     } else if (finalIntI == 1) {
                         Intent j = new Intent(DecoreEvents.this,DecoreEventByIntent.class );
@@ -43,6 +44,8 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","These Youth Choiced Decore Set is all based on the youth prefrenses ,including all the classical , simplisity vibes . It includes all the lightning and designing decorative elements which all makes your event memorable.");
                         j.putExtra("price","20000 Rs.");
                         startActivity(j);
+                        finish();
+
                     } else if (finalIntI == 2) {
                         Intent j = new Intent(DecoreEvents.this, DecoreEventByIntent.class);
                         j.putExtra("resId", R.drawable.premiumdecore);
@@ -51,6 +54,8 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
                         j.putExtra("price","25000 Rs.");
                         startActivity(j);
+                        finish();
+
                     } else if (finalIntI == 3) {
                         Intent j = new Intent(DecoreEvents.this, DecoreEventByIntent.class);
                         j.putExtra("resId", R.drawable.royaldecore);
@@ -59,6 +64,8 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
                         j.putExtra("price","30000 Rs.");
                         startActivity(j);
+                        finish();
+
                     } else if (finalIntI == 4) {
                         Intent j = new Intent(DecoreEvents.this, DecoreEventByIntent.class);
                         j.putExtra("resId", R.drawable.stunningdecore);
@@ -67,6 +74,8 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
                         j.putExtra("price","35000 Rs.");
                         startActivity(j);
+                        finish();
+
                     } else if (finalIntI == 5) {
                         Intent j = new Intent(DecoreEvents.this, DecoreEventByIntent.class);
                         j.putExtra("resId", R.drawable.premiumlightedroyaldecore);
@@ -75,6 +84,8 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
                         j.putExtra("price","50000 Rs.");
                         startActivity(j);
+                        finish();
+
                     }
                 }
             });

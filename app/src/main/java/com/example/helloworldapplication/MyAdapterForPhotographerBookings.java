@@ -1,5 +1,6 @@
 package com.example.helloworldapplication;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -78,17 +79,23 @@ public class MyAdapterForPhotographerBookings extends RecyclerView.Adapter<MyAda
                         ref=FirebaseDatabase.getInstance().getReference("Photographer_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child(order_id);
                         ref.setValue(null);
 
+                        AlertDialog.Builder builder2=new AlertDialog.Builder(context);
+                        builder2.setTitle("Booking Cancellation");
+                        builder2.setMessage("Your Booking Has Been Cancelled  Successfully !");
+                        builder2.setCancelable(false);
+                        builder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                        holder.x_photographer_id.setTextColor(Color.RED);
-                        holder.x_photographer_type.setTextColor(Color.RED);
-                        holder.x_photographer_status.setTextColor(Color.RED);
-                        holder.x_photographer_package.setTextColor(Color.RED);
-                        holder.x_photographer_price.setTextColor(Color.RED);
-                        holder.x_photographer_req.setTextColor(Color.RED);
-                        holder.x_photographer_address.setTextColor(Color.RED);
-                        holder.x_photographer_date.setTextColor(Color.RED);
-                        holder.x_photo_order_id.setTextColor(Color.RED);
-                        holder.cancel.setVisibility(View.INVISIBLE);
+
+                                ((Activity)context).finish();
+
+
+
+                            }
+                        });
+                        builder2.create().show();
+
 
 
 
