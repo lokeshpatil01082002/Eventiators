@@ -171,7 +171,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
                                         AlertDialog.Builder builder_new=new AlertDialog.Builder(OrderCakeByIntent.this);
                                         builder_new.setTitle("Order Execution");
-                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted our team will contact you soon.\nThank you for ordering !");
+                                        builder_new.setMessage("Your Order has been placed successfully.\nYou can check your order status from my order section.\nOnce your order get accepted ,order will be delievered to your address \nThank you for ordering !");
                                         builder.setCancelable(false);
 
                                         builder_new.setNeutralButton("OK", new DialogInterface.OnClickListener() {
