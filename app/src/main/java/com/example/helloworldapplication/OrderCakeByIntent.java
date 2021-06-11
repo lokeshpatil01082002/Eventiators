@@ -162,7 +162,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
                             bar.setVisibility(View.VISIBLE);
 
                             String status="Submitted ...Waiting To Accpeted ";
-                            CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,check_for_quant,string_date,cake_price,string_for_event_add,status,time_string);
+                            CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,check_for_quant,string_date,cake_price,string_for_event_add,status,time_string,FirebaseAuth.getInstance().getUid());
 
 
                             String path = "Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;
@@ -248,30 +248,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
 
 
-                  /*  bar.setVisibility(View.VISIBLE);
 
-                    String status="Submitted ...Waiting To Accpeted ";
-                    CakeOrderDb order = new CakeOrderDb(cake_code,cake_name,string_for_message,check_for_quant,string_date,cake_price,string_for_event_add,status,time_string);
-
-
-                    String path = "Cake_Order_Of_UserId___" + FirebaseAuth.getInstance().getCurrentUser().getUid() ;
-                    db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                bar.setVisibility(View.GONE);
-                                Toast.makeText(OrderCakeByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
-
-
-                            } else {
-                                bar.setVisibility(View.GONE);
-                                Toast.makeText(OrderCakeByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-
-                   */
 
                 }
             }

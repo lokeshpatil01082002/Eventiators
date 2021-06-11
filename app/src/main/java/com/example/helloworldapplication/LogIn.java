@@ -85,7 +85,7 @@ public class LogIn extends AppCompatActivity {
                    if (checkMail.equals("admin@gmail.com")&&checkPass.equals("admin@gmail.com")) {
                        Toast.makeText(LogIn.this, "Admin Logged-In", Toast.LENGTH_SHORT).show();
                        bar1.setVisibility(View.GONE);
-                       Intent i = new Intent(LogIn.this, admin_home.class);
+                       Intent i = new Intent(LogIn.this, AdminNewHome.class);
                        startActivity(i);
 
                    } else {

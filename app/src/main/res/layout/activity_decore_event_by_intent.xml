@@ -138,7 +138,35 @@
                             android:gravity="center"/>
 
         </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Requirement For -"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:textColor="@color/black"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <RadioButton android:id="@+id/radio_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Day "
 
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton android:id="@+id/radio_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 Days"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton android:id="@+id/radio_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 Day "
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
 
         <EditText
             android:id="@+id/editText_for_add"

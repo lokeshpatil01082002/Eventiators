@@ -57,12 +57,14 @@ public class MyAdapterForPhotographerBookings extends RecyclerView.Adapter<MyAda
         holder.x_photographer_address.setText(order.getPhotographer_add());
         holder.x_photographer_date.setText(order.getPhotographer_date());
         holder.x_photo_order_id.setText(order.getOrder_id());
+        holder.x_photographer_payment_status.setText(order.getPayment_status());
 
 
 
         holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                list.clear();
 
                 String order_id=holder.x_photo_order_id.getText().toString();
 
@@ -86,9 +88,9 @@ public class MyAdapterForPhotographerBookings extends RecyclerView.Adapter<MyAda
                         builder2.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
 
 
-                                ((Activity)context).finish();
 
 
 
@@ -125,7 +127,7 @@ public class MyAdapterForPhotographerBookings extends RecyclerView.Adapter<MyAda
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
-        TextView x_photographer_id,x_photographer_type,x_photographer_status,x_photographer_package,x_photographer_price,x_photographer_req,x_photographer_date,x_photographer_address,x_photo_order_id;
+        TextView x_photographer_id,x_photographer_type,x_photographer_status,x_photographer_package,x_photographer_price,x_photographer_req,x_photographer_date,x_photographer_address,x_photo_order_id,x_photographer_payment_status;
         Button cancel;
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -139,6 +141,7 @@ public class MyAdapterForPhotographerBookings extends RecyclerView.Adapter<MyAda
             x_photographer_address= itemView.findViewById(R.id.tv_photo_event_address);
             x_photographer_date= itemView.findViewById(R.id.tv_date_event);
             x_photo_order_id=itemView.findViewById(R.id.tv_photo_order_id);
+            x_photographer_payment_status=itemView.findViewById(R.id.tv_payment_status_photographer);
             cancel=itemView.findViewById(R.id.button_to_cancel);
 
 

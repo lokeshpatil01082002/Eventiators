@@ -59,11 +59,14 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
         holder.tv_set_add1.setText(order.getSet_add());
         holder.tv_set_status1.setText(order.getStatus());
         holder.tv_set_date1.setText(order.getSet_date());
+        holder.tv_payment.setText(order.getPayment_status());
+        holder.tv_req_days.setText(order.getRequired());
 
 
         holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                list.clear();
 
                 String order_id=holder.tv_order_id1.getText().toString();
 
@@ -91,7 +94,7 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
                             public void onClick(DialogInterface dialog, int which) {
 
 
-                                ((Activity)context).finish();
+                                dialog.dismiss();
 
 
 
@@ -127,7 +130,7 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
-        TextView tv_set_id1,tv_set_name1,tv_set_price1,tv_set_add1,tv_set_status1,tv_set_date1,tv_order_id1;
+        TextView tv_set_id1,tv_set_name1,tv_set_price1,tv_set_add1,tv_set_status1,tv_set_date1,tv_order_id1,tv_req_days,tv_payment;
         Button cancel;
 
 
@@ -141,6 +144,8 @@ public class MyAdapterForDecorationOrder extends RecyclerView.Adapter<MyAdapterF
             tv_set_status1=itemView.findViewById(R.id.tv_order_status);
             tv_set_date1=itemView.findViewById(R.id.tv_date_event);
             tv_order_id1=itemView.findViewById(R.id.tv_decore_order_id);
+            tv_req_days=itemView.findViewById(R.id.tv_requiring);
+            tv_payment=itemView.findViewById(R.id.tv_payment_status);
 
 
             cancel=itemView.findViewById(R.id.button_to_cancel_decore_order);

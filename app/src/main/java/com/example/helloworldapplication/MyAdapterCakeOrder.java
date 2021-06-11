@@ -60,6 +60,7 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
         holder.cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                list.clear();
 
                 String order_id=holder.tv_cake_order_id.getText().toString();
 
@@ -84,7 +85,7 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
                             public void onClick(DialogInterface dialog, int which) {
 
 
-                                ((Activity)context).finish();
+                               dialog.dismiss();
 
 
 

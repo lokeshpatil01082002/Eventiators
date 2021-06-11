@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import java.util.Calendar;
 
 public class DecoreEventByIntent extends AppCompatActivity {
     ImageView imageView;
+    String check_for_time = "1";
     TextView set_name_tx,price,dis_tx,code,tv;
 
     Button order_set_button,b1;
@@ -154,7 +156,8 @@ public class DecoreEventByIntent extends AppCompatActivity {
                             bar.setVisibility(View.VISIBLE);
 
                             String status="Submitted ...Waiting To Accpeted ";
-                            Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_date, set_price, string_for_event_add,status,time_string);
+                            String payment_status="Pending";
+                            Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_date, set_price, string_for_event_add,status,time_string,check_for_time,payment_status,FirebaseAuth.getInstance().getCurrentUser().getUid());
                             String path = "Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
                             db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -227,33 +230,39 @@ public class DecoreEventByIntent extends AppCompatActivity {
 
 
 
-                    /*bar.setVisibility(View.VISIBLE);
-
-                    String status="Submitted ...Waiting To Accpeted ";
-                    Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_date, set_price, string_for_event_add,status,time_string);
-                    String path = "Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                bar.setVisibility(View.GONE);
-                                Toast.makeText(DecoreEventByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
-
-
-                            } else {
-                                bar.setVisibility(View.GONE);
-                                Toast.makeText(DecoreEventByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-
-                     */
 
                 }
             }
 
         });
 
+    }
+
+
+
+
+
+    public void onRadioButtonClicked (View  view) {
+
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.radio_1:
+                if (checked)
+                    check_for_time = "1 Day";
+
+                break;
+            case R.id.radio_2:
+                if (checked)
+                    check_for_time = "2 Days";
+                break;
+            case R.id.radio_3:
+                if (checked)
+                    check_for_time = "3 Days";
+                break;
+
+        }
     }
 }

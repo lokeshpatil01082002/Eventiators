@@ -2,14 +2,14 @@ package com.example.helloworldapplication;
 
 public class CakeOrderDb {
 
-    String cake_code,cake_name,cake_msg_print,cake_quantity,cake_date,cake_price,cake_add,cake_status,order_id;
+    String cake_code,cake_name,cake_msg_print,cake_quantity,cake_date,cake_price,cake_add,cake_status,order_id,uid;
 
 
     public CakeOrderDb() {
 
     }
 
-    public CakeOrderDb(String cake_code, String cake_name, String cake_msg_print, String cake_quantity, String cake_date, String cake_price, String cake_add, String cake_status, String order_id) {
+    public CakeOrderDb(String cake_code, String cake_name, String cake_msg_print, String cake_quantity, String cake_date, String cake_price, String cake_add, String cake_status, String order_id, String uid) {
         this.cake_code = cake_code;
         this.cake_name = cake_name;
         this.cake_msg_print = cake_msg_print;
@@ -19,7 +19,9 @@ public class CakeOrderDb {
         this.cake_add = cake_add;
         this.cake_status = cake_status;
         this.order_id = order_id;
+        this.uid = uid;
     }
+
 
     public String getCake_code() {
         return cake_code;
@@ -55,5 +57,9 @@ public class CakeOrderDb {
 
     public String getOrder_id() {
         return order_id;
+    }
+
+    public String getUid() {
+        return uid;
     }
 }

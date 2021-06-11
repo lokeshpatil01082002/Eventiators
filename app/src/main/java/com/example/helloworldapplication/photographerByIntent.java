@@ -143,7 +143,8 @@ public class photographerByIntent extends AppCompatActivity {
                             pbar.setVisibility(View.VISIBLE);
 
                             String status="Submitted ...Waiting To Accpeted ";
-                            AppointPhotographerDatabase order = new AppointPhotographerDatabase(String_photographer_type,String_photographer_code,String_photographer_price,check_for_time,string_date,string_for_event_address,status,String_photographer_includes,time_string);
+                            String payment_status="Pending";
+                            AppointPhotographerDatabase order = new AppointPhotographerDatabase(String_photographer_type,String_photographer_code,String_photographer_price,check_for_time,string_date,string_for_event_address,status,String_photographer_includes,time_string,payment_status,FirebaseAuth.getInstance().getCurrentUser().getUid());
                             String path = "Photographer_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
                             FirebaseDatabase.getInstance().getReference(path).child(String.valueOf(time_string)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -219,28 +220,7 @@ public class photographerByIntent extends AppCompatActivity {
 
 
 
-                   /* pbar.setVisibility(View.VISIBLE);
 
-                    String status="Submitted ...Waiting To Accpeted ";
-                    AppointPhotographerDatabase order = new AppointPhotographerDatabase(String_photographer_type,String_photographer_code,String_photographer_price,check_for_time,string_date,string_for_event_address,status,String_photographer_includes,time_string);
-                    String path = "Photographer_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    FirebaseDatabase.getInstance().getReference(path).child(String.valueOf(time_string)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                pbar.setVisibility(View.GONE);
-                                Toast.makeText(photographerByIntent.this, "Order Placed Succesfully...", Toast.LENGTH_SHORT).show();
-
-
-                            } else {
-                                pbar.setVisibility(View.GONE);
-                                Toast.makeText(photographerByIntent.this, "Error Occcured !!!!", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-
-                    */
 
 
 
