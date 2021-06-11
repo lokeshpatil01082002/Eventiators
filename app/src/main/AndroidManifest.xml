@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventiators">
-        <activity android:name=".AdminShowUserDetailsAndOrders"></activity>
+        <activity android:name=".engagementinvitation"></activity>
+        <activity android:name=".birthdayinvitation" />
+        <activity android:name=".anniversaryinvitation" />
+        <activity android:name=".weddinginvitation" />
+        <activity android:name=".AdminShowUserDetailsAndOrders" />
         <activity android:name=".AdminUserList" />
         <activity android:name=".AdminNewHome" />
         <activity android:name=".AdminViewCatering" />
