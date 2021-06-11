@@ -27,7 +27,7 @@ public class AdminNewHome extends AppCompatActivity {
         view_user_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(AdminNewHome.this,admin_home.class);
+                Intent i=new Intent(AdminNewHome.this,AdminUserList.class);
                 startActivity(i);
             }
         });
