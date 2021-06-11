@@ -72,12 +72,8 @@ public class HomeFragment extends Fragment {
                         Intent j = new Intent(getActivity(), OrderCake.class);
                         startActivity(j);
                     }
+
                     else if(finalIntI==4)
-                    {
-                        Intent j = new Intent(getActivity(), OrderGifts.class);
-                        startActivity(j);
-                    }
-                    else if(finalIntI==5)
                     {
                         Intent j = new Intent(getActivity(), InvitationCard.class);
                         startActivity(j);

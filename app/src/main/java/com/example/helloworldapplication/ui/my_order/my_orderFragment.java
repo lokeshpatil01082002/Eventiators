@@ -21,7 +21,7 @@ import com.example.helloworldapplication.View_photographer_bookings;
 public class my_orderFragment extends Fragment {
 
 
-        Button decore,photogrpaher,cake,gift,catering;
+        Button decore,photogrpaher,cake,catering;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class my_orderFragment extends Fragment {
         decore=root.findViewById(R.id.button_to_display_decoration_order);
         photogrpaher=root.findViewById(R.id.button_to_display_photographer_bookings);
         cake=root.findViewById(R.id.button_to_display_cake_order);
-        gift=root.findViewById(R.id.button_to_display_gift_order);
+
         catering=root.findViewById(R.id.button_to_display_catering_service_orders);
 
 
@@ -74,13 +74,6 @@ public class my_orderFragment extends Fragment {
         });
 
 
-        gift.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), View_Gift_orders.class);
-                startActivity(i);
-            }
-        });
 
         return root;
     }

@@ -41,18 +41,28 @@ public class AdapterAdminUserlist extends RecyclerView.Adapter<AdapterAdminUserl
         holder.userid.setText(user.getUid());
         holder.email.setText(user.getEmail());
 
+        holder.view_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
+                String uname=user.getName();
+                String uid=user.getUid();
+                String uphone=user.getPhone();
+                String uemail=user.getEmail();
+                String uadd=user.getAdd();
+
+                Intent i=new Intent(context,AdminShowUserDetailsAndOrders.class);
+                i.putExtra("uname",uname);
+                i.putExtra("mail",uemail);
+                i.putExtra("uphone",uphone);
+                i.putExtra("uadd",uadd);
+                i.putExtra("uid",uid);
+                context.startActivity(i);
 
 
-
-
-
-
-
-
-
-
+            }
+        });
 
 
     }

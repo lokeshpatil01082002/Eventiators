@@ -60,16 +60,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_to_display_catering_service_orders" />
 
-    <Button
-        android:id="@+id/button_to_display_gift_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#B82D5E"
-        android:layout_marginTop="16dp"
-        android:text="View Gift Orders"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_to_display_cake_order" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
