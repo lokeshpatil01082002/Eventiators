@@ -3,6 +3,8 @@
     package="com.example.helloworldapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eventiators">
-        <activity android:name=".engagementinvitation"></activity>
+        <activity android:name=".BirthdayByIntent"></activity>
+        <activity android:name=".engagementinvitation" />
         <activity android:name=".birthdayinvitation" />
         <activity android:name=".anniversaryinvitation" />
         <activity android:name=".weddinginvitation" />
@@ -60,6 +63,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+
     </application>
 
 </manifest>
