@@ -53,6 +53,7 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
         holder.tv_cake_price1.setText(order.getCake_price());
         holder.tv_cake_status1.setText(order.getCake_status());
         holder.tv_cake_quant.setText(order.getCake_quantity());
+        holder.payment_status.setText(order.getPayment_status());
 
         holder.tv_cake_order_id.setText(order.getOrder_id());
 
@@ -131,7 +132,7 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
 
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
-        TextView tv_cake_id1,tv_cake_name1,tv_cake_price1,tv_cake_add1,tv_cake_status1,tv_cake_date1,tv_cake_quant,tv_cake_mseg,tv_cake_order_id;
+        TextView tv_cake_id1,tv_cake_name1,tv_cake_price1,tv_cake_add1,tv_cake_status1,tv_cake_date1,tv_cake_quant,tv_cake_mseg,tv_cake_order_id,payment_status;
         Button cancel;
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -145,6 +146,7 @@ public class MyAdapterCakeOrder extends RecyclerView.Adapter<MyAdapterCakeOrder.
           tv_cake_status1=itemView.findViewById(R.id.tv_order_status);
           tv_cake_quant=itemView.findViewById(R.id.tv_cake_quant);
           tv_cake_order_id=itemView.findViewById(R.id.tv_order_cake_order_id);
+          payment_status=itemView.findViewById(R.id.tv_payment_status_cake);
 
 
           cancel=itemView.findViewById(R.id.button_to_cancel_cake_order);

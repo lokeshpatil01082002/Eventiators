@@ -52,6 +52,7 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
         holder.cakedate.setText(orderDb.getCake_date());
         holder.cakeaddress.setText(orderDb.getCake_add());
         holder.cakeorderstatus.setText(orderDb.getCake_status());
+        holder.payment_status_cake.setText(orderDb.getPayment_status());
 
         String uid=orderDb.getUid();
         int duration = Toast.LENGTH_SHORT;
@@ -166,7 +167,7 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
 
     public static class MyViewHolderC extends RecyclerView.ViewHolder{
 
-        TextView cakeorderid,cakeid,cakename,cakeprice,cakequantity,cakemsg,cakedate,cakeaddress,cakeorderstatus;
+        TextView cakeorderid,cakeid,cakename,cakeprice,cakequantity,cakemsg,cakedate,cakeaddress,cakeorderstatus,payment_status_cake;
         Button cake_accepted,cake_rejected,cake_completed;
 
         public MyViewHolderC(@NonNull View itemView) {
@@ -183,6 +184,7 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
             cakedate=itemView.findViewById(R.id.admin_item_cake_date);
             cakeaddress=itemView.findViewById(R.id.admin_item_cake_address);
             cakeorderstatus=itemView.findViewById(R.id.admin_item_cake_order_status);
+            payment_status_cake=itemView.findViewById(R.id.admin_item_cake_order_status_payment);
 
 
 
