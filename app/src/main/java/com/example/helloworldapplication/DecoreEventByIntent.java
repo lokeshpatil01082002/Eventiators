@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +35,7 @@ import java.util.Calendar;
 
 public class DecoreEventByIntent extends AppCompatActivity {
     ImageView imageView;
-    String check_for_time = "1";
+    String check_for_time = "1 Day";
     TextView set_name_tx,price,dis_tx,code,tv;
 
     Button order_set_button,b1;
@@ -65,6 +68,36 @@ public class DecoreEventByIntent extends AppCompatActivity {
 
         int resId = bundle.getInt("resId");
         imageView.setImageResource(resId);
+
+
+        Spinner dropdown = findViewById(R.id.spinner1);
+
+        String[] items = new String[]{"1 Day", "2 Days", "3 Days"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                       check_for_time="1 Day";
+                        break;
+                    case 1:
+                       check_for_time="2 Days";
+                        break;
+                    case 2:
+                     check_for_time="3 Days";
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -265,4 +298,8 @@ public class DecoreEventByIntent extends AppCompatActivity {
 
         }
     }
+
+
+
+
 }

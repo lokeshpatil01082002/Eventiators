@@ -112,28 +112,12 @@
                         android:textStyle="bold"
                         android:textSize="15dp"
                         android:textColor="@color/black"/>
-                    <RadioGroup
+                    <Spinner
+                        android:id="@+id/spinner1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                     >
-                    <RadioButton android:id="@+id/radio_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1 Day OR 1 Hour"
-
-                        android:onClick="onRadioButtonClicked"/>
-                    <RadioButton android:id="@+id/radio_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2 Days OR 2 Hours"
-                        android:onClick="onRadioButtonClicked"/>
-                        <RadioButton android:id="@+id/radio_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3 Day OR 3 Hour"
-                            android:onClick="onRadioButtonClicked"/>
-                    </RadioGroup>
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown" />
 
 
 
@@ -213,6 +197,39 @@
                         android:layout_width="139dp"
                         android:layout_height="37dp"
                         android:layout_gravity="center" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/holo_blue_bright"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:text="Payment Option"></TextView>
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pay_upi_photo"
+                            android:onClick="onRadioButtonClicked"
+                            android:text="Pay With UPI"></RadioButton>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pay_on_delievery_photo"
+                            android:onClick="onRadioButtonClicked"
+                            android:text="Pay On Service"></RadioButton>
+
+                    </RadioGroup>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pay Now"
+                        android:id="@+id/pay_now_photo"
+                        android:backgroundTint="@android:color/holo_green_light"></Button>
 
                     <Button
                         android:layout_width="match_parent"

@@ -280,6 +280,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
 
                 String price_pay=cake_price.substring(0,3);
+
                 int price_convert=Integer.parseInt(price_pay);
 
                 double final_price=price_convert * multiplication_value;

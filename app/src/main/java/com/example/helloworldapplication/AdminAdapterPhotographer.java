@@ -87,7 +87,7 @@ public class AdminAdapterPhotographer extends RecyclerView.Adapter<AdminAdapterP
             @Override
             public void onClick(View v) {
 
-
+                list.clear();
 
 
 

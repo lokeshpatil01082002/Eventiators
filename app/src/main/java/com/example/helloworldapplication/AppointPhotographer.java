@@ -39,6 +39,7 @@ public class AppointPhotographer extends AppCompatActivity {
                         j.putExtra("photographer_code","WP50");
                         j.putExtra("dis","Wedding Photographer discription box");
                         j.putExtra("price","50000 Rs/Day");
+
                         j.putExtra("icludes","Physical And Digital Prints Of Photos / video With Full Editing");
                         startActivity(j);
 
@@ -48,7 +49,8 @@ public class AppointPhotographer extends AppCompatActivity {
                         j.putExtra("photographer_type","Event / Gathering Photographer");
                         j.putExtra("photographer_code","EGP20");
                         j.putExtra("dis","Event Photographer discription box");
-                        j.putExtra("price","50000 Rs/Day");
+                        j.putExtra("price","20000 Rs/Day");
+
                         j.putExtra("icludes","Digital Prints Of Photos / video");
                         startActivity(j);
                     }
@@ -59,6 +61,7 @@ public class AppointPhotographer extends AppCompatActivity {
                         j.putExtra("photographer_code","GP2");
                         j.putExtra("dis","General Photographer discription box");
                         j.putExtra("price","2000 Rs/hour");
+
                         j.putExtra("icludes","Digital Prints Of Photos / video");
                         startActivity(j);
                     }
@@ -69,6 +72,7 @@ public class AppointPhotographer extends AppCompatActivity {
                         j.putExtra("photographer_code","FP5");
                         j.putExtra("dis","Fashion Photographer discription box");
                         j.putExtra("price","5000 Rs/Hour");
+
                         j.putExtra("icludes","Physical And Digital Prints Of Complete Edited Photos / video");
                         startActivity(j);
                     }
@@ -79,6 +83,7 @@ public class AppointPhotographer extends AppCompatActivity {
                         j.putExtra("photographer_code","FP10");
                         j.putExtra("dis","Formal Photographer discription box");
                         j.putExtra("price","10000 Rs/Day");
+
                         j.putExtra("icludes","Physical And Digital Prints Of Photos / video");
                         startActivity(j);
                     }
