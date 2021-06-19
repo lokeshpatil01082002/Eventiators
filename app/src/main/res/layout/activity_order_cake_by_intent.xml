@@ -208,7 +208,7 @@
                     <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         >
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -224,6 +224,14 @@
                             android:onClick="onRadioButtonClicked"
                             android:text="Pay On Delievery"></RadioButton>
 
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pay_on_credentials_cake"
+                            android:onClick="onRadioButtonClicked"
+                            android:text="Pay Explicitly With Our Credential"></RadioButton>
+
+
                     </RadioGroup>
                     <Button
                         android:layout_width="wrap_content"
@@ -235,11 +243,16 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text=""
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:id="@+id/result_tv"></TextView>
+                        android:text="Account No -37880460223\nBank Holder Name:LOKESH JITENDRA PATIL\nBank Name :STATE BANK OF INDIA\nBranch COde :272\nIFSC Code :SBIN0000272"
+                        android:id="@+id/account_details_cake"></TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="You Bill Amount :"
+                        android:id="@+id/bill_amount_cake"></TextView>
+
+
+
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

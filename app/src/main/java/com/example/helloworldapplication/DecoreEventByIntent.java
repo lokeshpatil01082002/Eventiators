@@ -43,7 +43,9 @@ public class DecoreEventByIntent extends AppCompatActivity {
     ImageView imageView;
     String check_for_time = "1 Day";
     TextView set_name_tx,price,dis_tx,code,tv;
+    TextView txt_account_details,txt_amount;
     int multiplication_value;
+    String amount="";
 
     Button order_set_button,b1;
     EditText edit_add;
@@ -55,12 +57,21 @@ public class DecoreEventByIntent extends AppCompatActivity {
     Button paynow;
     String payment_status="";
     final int UPI_PAYMENT = 0;
+    String global_price;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decore_event_by_intent);
+
+        txt_account_details=findViewById(R.id.account_details);
+        txt_amount=findViewById(R.id.bill_amount);
+
+        txt_amount.setVisibility(View.INVISIBLE);
+        txt_account_details.setVisibility(View.INVISIBLE);
         imageView = findViewById(R.id.imageinintent);
         set_name_tx=findViewById(R.id.set_name);
         price=findViewById(R.id.set_Price);
@@ -71,7 +82,11 @@ public class DecoreEventByIntent extends AppCompatActivity {
         bar=findViewById(R.id.progressBar_decore);
         paynow=findViewById(R.id.pay_now_decoration);
         paynow.setVisibility(View.INVISIBLE);
+
+        Bundle bundle = getIntent().getExtras();
         String set_price = getIntent().getExtras().getString("price");
+        global_price=set_price;
+
         price.setText("Price Charge :\t" + set_price);
 
 
@@ -84,10 +99,10 @@ public class DecoreEventByIntent extends AppCompatActivity {
                 int price_convert=Integer.parseInt(price_string);
 
                 double final_price=price_convert * multiplication_value;
-                // int int_amount=(int)final_price-599;
+                //int int_amount=(int)final_price-599;
                 int int_amount=(int)final_price;
 
-                String amount=String.valueOf(int_amount);
+                amount=String.valueOf(int_amount);
                 String note = "Photographer Booking Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String name = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                 String upiId = "9890037562@ybl";
@@ -123,7 +138,6 @@ public class DecoreEventByIntent extends AppCompatActivity {
         });
 
         bar.setVisibility(View.INVISIBLE);
-        Bundle bundle = getIntent().getExtras();
 
         int resId = bundle.getInt("resId");
         imageView.setImageResource(resId);
@@ -252,7 +266,7 @@ public class DecoreEventByIntent extends AppCompatActivity {
                             bar.setVisibility(View.VISIBLE);
 
                             String status="Submitted ...Waiting To Accpeted ";
-                            payment_status="Pay On Delievery";
+
                             Decore_Set_Order order = new Decore_Set_Order(set_code, set_name, string_date, set_price, string_for_event_add,status,time_string,check_for_time,payment_status,FirebaseAuth.getInstance().getCurrentUser().getUid());
                             String path = "Decoration_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
                             db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -361,12 +375,34 @@ public class DecoreEventByIntent extends AppCompatActivity {
             case R.id.pay_on_delievery_decoration:
                 if (checked)
                     payment_status="On Delievery";
+                txt_account_details.setVisibility(View.INVISIBLE);
+                txt_amount.setVisibility(View.INVISIBLE);
+                paynow.setVisibility(View.INVISIBLE);
 
                 break;
 
             case R.id.pay_upi_decoration:
                 if (checked)
                     paynow.setVisibility(View.VISIBLE);
+                txt_account_details.setVisibility(View.INVISIBLE);
+                txt_amount.setVisibility(View.INVISIBLE);
+
+                break;
+            case R.id.pay_on_credentials_decoration:
+                if (checked)
+                    txt_account_details.setVisibility(View.VISIBLE);
+                    txt_amount.setVisibility(View.VISIBLE);
+                    paynow.setVisibility(View.INVISIBLE);
+                    payment_status="To Admin Credential";
+                    String  price_string=global_price.substring(0,5);
+                        int price_convert=Integer.parseInt(price_string);
+
+                    double final_price=price_convert * multiplication_value;
+                //int int_amount=(int)final_price-599;
+                    int int_amount=(int)final_price;
+
+                     amount=String.valueOf(int_amount);
+                txt_amount.setText("Your Bill Amount :\t"+amount);
                 break;
 
         }

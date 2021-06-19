@@ -59,13 +59,7 @@ public class BirthdayByIntent extends AppCompatActivity {
         t_to.setText("Dear  "+to+",\t");
         t_at.setText("Venue:\t"+at);
 
-        wp=findViewById(R.id.whatsappimagebutton);
-        wp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         btsave=findViewById(R.id.save_to_storage);
         btsave.setOnClickListener(new View.OnClickListener() {

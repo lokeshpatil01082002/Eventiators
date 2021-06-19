@@ -219,7 +219,35 @@ public class AdminAdapterPhotographer extends RecyclerView.Adapter<AdminAdapterP
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         dataSnapshot.getRef().child("payment_status").setValue("Failed");
-                        Toast toast = Toast.makeText(context,"Order Status Updated" ,duration);
+                        Toast toast = Toast.makeText(context,"Payment Status Updated" ,duration);
+                        toast.show();
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
+        holder.partial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Photographer_Order_Of_UserId__"+uid).child(order.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Partial Done");
+                        Toast toast = Toast.makeText(context,"Payment Status Updated" ,duration);
                         toast.show();
 
 
@@ -248,7 +276,7 @@ public class AdminAdapterPhotographer extends RecyclerView.Adapter<AdminAdapterP
 
         TextView x_photographer_id,x_photographer_type,x_photographer_status,x_photographer_package,x_photographer_price,x_photographer_req,x_photographer_date,x_photographer_address,x_photo_order_id,x_photographer_payment_status;
 
-        Button accepted,rejected,failed,done,completed;
+        Button accepted,rejected,failed,done,completed,partial;
         //String uid;
 
 
@@ -274,6 +302,7 @@ public class AdminAdapterPhotographer extends RecyclerView.Adapter<AdminAdapterP
             failed=itemView.findViewById(R.id.admin_failed_photo);
             done=itemView.findViewById(R.id.admin_done_photo);
             completed=itemView.findViewById(R.id.admin_completed_photo);
+            partial=itemView.findViewById(R.id.admin_partial_photo);
 
         }
     }

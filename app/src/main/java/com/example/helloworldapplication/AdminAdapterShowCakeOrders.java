@@ -156,6 +156,90 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
 
             }
         });
+        holder.done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Cake_Order_Of_UserId___"+uid).child(orderDb.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Done");
+                        Toast toast = Toast.makeText(context,"Payment Status Updated" ,duration);
+                        toast.show();
+
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+        holder.failed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Cake_Order_Of_UserId___"+uid).child(orderDb.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Failed");
+                        Toast toast = Toast.makeText(context,"Order Status Updated" ,duration);
+                        toast.show();
+
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+        holder.partial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Cake_Order_Of_UserId___"+uid).child(orderDb.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Partial Done");
+                        Toast toast = Toast.makeText(context,"Payment Status Updated" ,duration);
+                        toast.show();
+
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
 
 
     }
@@ -168,7 +252,7 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
     public static class MyViewHolderC extends RecyclerView.ViewHolder{
 
         TextView cakeorderid,cakeid,cakename,cakeprice,cakequantity,cakemsg,cakedate,cakeaddress,cakeorderstatus,payment_status_cake;
-        Button cake_accepted,cake_rejected,cake_completed;
+        Button cake_accepted,cake_rejected,cake_completed,done,failed,partial;
 
         public MyViewHolderC(@NonNull View itemView) {
             super(itemView);
@@ -195,6 +279,10 @@ public class AdminAdapterShowCakeOrders extends RecyclerView.Adapter<AdminAdapte
             cake_rejected=itemView.findViewById(R.id.admin_item_cake_rejected);
             cake_completed=itemView.findViewById(R.id.admin_item_cake_completed);
 
+
+            done=itemView.findViewById(R.id.admin_done_cake);
+            failed=itemView.findViewById(R.id.admin_failed_cake);
+            partial=itemView.findViewById(R.id.admin_partial_cake);
         }
     }
 }

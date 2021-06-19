@@ -216,6 +216,34 @@ public class AdminAdapterCatering extends RecyclerView.Adapter<AdminAdapterCater
 
             }
         });
+        holder.partial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Catering_Order_Of_UserId__"+uid).child(order.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Partial Done");
+                        Toast toast = Toast.makeText(context,"Payment Status Updated" ,duration);
+                        toast.show();
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
 
 
 
@@ -240,7 +268,7 @@ public class AdminAdapterCatering extends RecyclerView.Adapter<AdminAdapterCater
 
 
         TextView tv_catering_order_id,tv_catering_type,tv_catering_price_per_plate,tv_catering_guest_count,tv_catering_event_date,tv_catering_add,tv_catering_requiring_days,tv_catering_menu_list,tv_catering_payment_status,tv_catering_order_status;
-        Button catering_accepted,catering_rejected,catering_completed,catering_done,catering_failed;
+        Button catering_accepted,catering_rejected,catering_completed,catering_done,catering_failed,partial;
         public MyViewHolder2(@NonNull View itemView) {
             super(itemView);
 
@@ -263,6 +291,7 @@ public class AdminAdapterCatering extends RecyclerView.Adapter<AdminAdapterCater
 
             catering_done=itemView.findViewById(R.id.admin_done_catering);
             catering_failed=itemView.findViewById(R.id.admin_failed_catering);
+            partial=itemView.findViewById(R.id.admin_partial_catering);
 
 
 

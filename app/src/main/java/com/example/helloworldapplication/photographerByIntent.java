@@ -43,6 +43,7 @@ public class photographerByIntent extends AppCompatActivity {
     Button b1, appoint_photographer;
     TextView tv, photographer_type, photographer_code, photographer_price, photographer_dis, photographer_includes;
     EditText event_address;
+    TextView account_details,amount_bill;
     ImageView imageView;
     ProgressBar pbar;
     String string_date="";
@@ -50,7 +51,7 @@ public class photographerByIntent extends AppCompatActivity {
     Button paynow;
     int multiplication_value=1;
     String payment_status_photo="";
-    String price_pay="";
+    long price_pay;
 
 
     @Override
@@ -65,6 +66,13 @@ public class photographerByIntent extends AppCompatActivity {
         imageView = findViewById(R.id.photographerimageinintent);
         paynow=findViewById(R.id.pay_now_photo);
         paynow.setVisibility(View.INVISIBLE);
+
+
+        amount_bill=findViewById(R.id.bill_amount_photo);
+        account_details=findViewById(R.id.account_details_photo);
+
+        amount_bill.setVisibility(View.INVISIBLE);
+        account_details.setVisibility(View.INVISIBLE);
 
 
         photographer_type = findViewById(R.id.photographer_type);
@@ -109,13 +117,16 @@ public class photographerByIntent extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        check_for_time="1 Day";
+                        check_for_time="1";
+                        multiplication_value=1;
                         break;
                     case 1:
-                        check_for_time="2 Days";
+                        check_for_time="2";
+                        multiplication_value=2;
                         break;
                     case 2:
-                        check_for_time="3 Days";
+                        check_for_time="3";
+                        multiplication_value=3;
                         break;
 
                 }
@@ -130,19 +141,19 @@ public class photographerByIntent extends AppCompatActivity {
 
 
         if(String_photographer_code.equals("WP50")){
-            price_pay="50000";
+            price_pay=50000;
         }
         else if(String_photographer_code.equals("EGP20")){
-            price_pay="20000";
+            price_pay=20000;
         }
         else if(String_photographer_code.equals("GP2")){
-            price_pay="2000";
+            price_pay=2000;
         }
         else if(String_photographer_code.equals("FP5")){
-            price_pay="5000";
+            price_pay=5000;
         }
         else if(String_photographer_code.equals("FP10")){
-            price_pay="10000";
+            price_pay=10000;
         }
 
 
@@ -182,14 +193,7 @@ public class photographerByIntent extends AppCompatActivity {
             public void onClick(View v) {
 
 
-             //   makeText(photographerByIntent.this, price_pay, LENGTH_SHORT).show();
-
-                int price_convert=Integer.parseInt(price_pay);
-
-                double final_price=price_convert * multiplication_value;
-                // int int_amount=(int)final_price-599;
-                int int_amount=1;
-
+                long int_amount=price_pay*multiplication_value;
                String amount=String.valueOf(int_amount);
                String note = "Photographer Booking Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String name = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -386,6 +390,8 @@ public class photographerByIntent extends AppCompatActivity {
                     break;
                 case R.id.pay_on_delievery_photo:
                     if (checked)
+                        account_details.setVisibility(View.INVISIBLE);
+                    amount_bill.setVisibility(View.INVISIBLE);
                         payment_status_photo="On Delievery";
                     paynow.setVisibility(View.INVISIBLE);
                     break;
@@ -393,7 +399,31 @@ public class photographerByIntent extends AppCompatActivity {
                 case R.id.pay_upi_photo:
                     if (checked)
                         paynow.setVisibility(View.VISIBLE);
+                    account_details.setVisibility(View.INVISIBLE);
+                    amount_bill.setVisibility(View.INVISIBLE);
+
                     break;
+                case R.id.pay_on_credentials_photo:
+                    if (checked)
+
+                    {
+
+                        long final_price=price_pay * multiplication_value;
+
+
+
+
+
+                        account_details.setVisibility(View.VISIBLE);
+                    amount_bill.setVisibility(View.VISIBLE);
+                    paynow.setVisibility(View.INVISIBLE);
+                    payment_status_photo="To Admin Credential";
+
+
+
+                    amount_bill.setText("Your Bill Amount :\t"+final_price); }
+                    break;
+
 
             }
         }

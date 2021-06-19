@@ -230,6 +230,35 @@ public class AdminAdapterDecoration extends RecyclerView.Adapter<AdminAdapterDec
             }
         });
 
+        holder.partial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+
+                FirebaseDatabase database;
+                DatabaseReference myref;
+                database = FirebaseDatabase.getInstance();
+                myref = database.getReference();
+                myref.child("Decoration_Order_Of_UserId__"+uid).child(order.getOrder_id()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        dataSnapshot.getRef().child("payment_status").setValue("Partially Done");
+                        Toast toast = Toast.makeText(context,"Order Status Updated" ,duration);
+                        toast.show();
+
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
+
 
 
 
@@ -243,7 +272,7 @@ public class AdminAdapterDecoration extends RecyclerView.Adapter<AdminAdapterDec
     public static class MyViewHolder2 extends RecyclerView.ViewHolder{
 
         TextView tv_set_id1,tv_set_name1,tv_set_price1,tv_set_add1,tv_set_status1,tv_set_date1,tv_order_id1,tv_req_days,tv_payment;
-        Button accepted,rejected,failed,done,completed;
+        Button accepted,rejected,failed,done,completed,partial;
         //String uid;
 
 
@@ -266,6 +295,7 @@ public class AdminAdapterDecoration extends RecyclerView.Adapter<AdminAdapterDec
            failed=itemView.findViewById(R.id.admin_failed);
            done=itemView.findViewById(R.id.admin_done);
            completed=itemView.findViewById(R.id.admin_completed);
+           partial=itemView.findViewById(R.id.admin_partial);
 
         }
     }

@@ -6,8 +6,11 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ public class LogIn extends AppCompatActivity {
     Button BtNew;
     ProgressBar bar1;
     TextView Forgot;
+    CheckBox show_password;
     FirebaseAuth firebaseAuth;
 
 
@@ -43,7 +47,21 @@ public class LogIn extends AppCompatActivity {
         Forgot=findViewById(R.id.forgot);
 
         bar1.setVisibility(View.INVISIBLE);
+        show_password=findViewById(R.id.check_box_show_password);
 
+        show_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    EditPass.setTransformationMethod(null);
+                }
+                else
+                {
+                    EditPass.setTransformationMethod(new PasswordTransformationMethod());
+                }
+            }
+        });
 
 
 

@@ -183,7 +183,7 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -198,6 +198,13 @@
                     android:id="@+id/pay_on_delievery_decoration"
                     android:onClick="onRadioButtonClicked"
                     android:text="Pay On Service"></RadioButton>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pay_on_credentials_decoration"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Pay Explicitly With Our Credential"></RadioButton>
+
 
             </RadioGroup>
             <Button
@@ -206,6 +213,17 @@
                 android:text="Pay Now"
                 android:id="@+id/pay_now_decoration"
                 android:backgroundTint="@android:color/holo_green_light"></Button>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account No -37880460223\nBank Holder Name:LOKESH JITENDRA PATIL\nBank Name :STATE BANK OF INDIA\nBranch COde :272\nIFSC Code :SBIN0000272"
+                android:id="@+id/account_details"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You Bill Amount :"
+                android:id="@+id/bill_amount"></TextView>
 
 
             <Button

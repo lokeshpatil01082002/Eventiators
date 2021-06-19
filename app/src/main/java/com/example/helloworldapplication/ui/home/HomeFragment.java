@@ -24,6 +24,7 @@ import com.example.helloworldapplication.OrderCake;
 import com.example.helloworldapplication.OrderGifts;
 import com.example.helloworldapplication.R;
 import com.example.helloworldapplication.admin_home;
+import com.example.helloworldapplication.birthdayinvitation;
 
 public class HomeFragment extends Fragment {
 
@@ -75,7 +76,7 @@ public class HomeFragment extends Fragment {
 
                     else if(finalIntI==4)
                     {
-                        Intent j = new Intent(getActivity(), InvitationCard.class);
+                        Intent j = new Intent(getActivity(), birthdayinvitation.class);
                         startActivity(j);
                     }
                 }

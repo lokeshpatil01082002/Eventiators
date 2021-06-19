@@ -39,6 +39,7 @@ public class CateringByIntent extends AppCompatActivity {
         TextView textview_catring_name,tv,tv_get_plate_price,menu_list;
         EditText edit_catering_address;
         Button b1,order_catering_button,generate_price_per_plate,get_menu_string;
+        TextView tv_account_details,tv_amount_bill;
 
         CheckBox drink1,drink2,drink3,drink4,drink5;
         CheckBox chat1,chat2,chat3,chat4,chat5;
@@ -80,6 +81,12 @@ public class CateringByIntent extends AppCompatActivity {
 
         int extra_value = getIntent().getIntExtra("extra_price", 0);
 
+
+        tv_account_details=findViewById(R.id.account_details_catering);
+        tv_amount_bill=findViewById(R.id.bill_amount_catering);
+
+        tv_account_details.setVisibility(View.INVISIBLE);
+        tv_amount_bill.setVisibility(View.INVISIBLE);
 
 
 
@@ -675,6 +682,19 @@ public class CateringByIntent extends AppCompatActivity {
             case R.id.pay_upi_catering:
                 if (checked)
                     pay_now.setVisibility(View.VISIBLE);
+                tv_account_details.setVisibility(View.INVISIBLE);
+                tv_amount_bill.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.pay_on_credentials_catering:
+                if (checked)
+                    payment_status="Pay TO Admin Credential";
+                    pay_now.setVisibility(View.VISIBLE);
+                    tv_account_details.setVisibility(View.VISIBLE);
+                    tv_amount_bill.setVisibility(View.VISIBLE);
+
+                    long final_amount = (long) (price_calculate * multiplication_value *guest_int);
+                    tv_amount_bill.setText("Final Bill Amout :\t" + final_amount);
+
                 break;
 
 
