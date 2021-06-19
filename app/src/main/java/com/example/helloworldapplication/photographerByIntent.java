@@ -63,6 +63,7 @@ public class photographerByIntent extends AppCompatActivity {
         appoint_photographer = findViewById(R.id.button_for_appoint_photographer);
         event_address = findViewById(R.id.photographer_order_event_address);
         imageView = findViewById(R.id.photographerimageinintent);
+        paynow=findViewById(R.id.pay_now_photo);
         paynow.setVisibility(View.INVISIBLE);
 
 

@@ -4,15 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CateringByIntent extends AppCompatActivity {
@@ -36,15 +46,21 @@ public class CateringByIntent extends AppCompatActivity {
         CheckBox gravy1,gravy2,gravy3,gravy4,gravy5,gravy6;
         CheckBox roti1,roti2,roti3,roti4;
         CheckBox dessert1,dessert2,dessert3,dessert4,dessert5,dessert6;
+        String payment_status="";
+        Button pay_now;
+
         ProgressBar pbar;
         FirebaseDatabase db;
+    final int UPI_PAYMENT = 0;
     double price_calculate=0;
     String order_plate="";
     int item_count=0;
     DatePicker dp;
     String string_date="";
     String guest_no="";
-    String requiring="";
+    String requiring="1 Day";
+    int multiplication_value;
+    int guest_int;
     String address="";
     String time_string_cal="";
 
@@ -63,6 +79,10 @@ public class CateringByIntent extends AppCompatActivity {
         textview_catring_name.setText(catering_type);
 
         int extra_value = getIntent().getIntExtra("extra_price", 0);
+
+
+
+
 
 
         pbar=findViewById(R.id.progressBar_catering);
@@ -146,6 +166,92 @@ public class CateringByIntent extends AppCompatActivity {
                 Toast.makeText(CateringByIntent.this, String.valueOf(extra_value), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        Spinner dropdown = findViewById(R.id.spinner1);
+
+        String[] items = new String[]{"1 Day", "2 Days", "3 Days"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        requiring="1 Day";
+                        multiplication_value=1;
+                        break;
+                    case 1:
+                        requiring="2 Days";
+                        multiplication_value=2;
+                        break;
+                    case 2:
+                        requiring="3 Days";
+                        multiplication_value=3;
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        pay_now=findViewById(R.id.pay_now_catering);
+        pay_now.setVisibility(View.INVISIBLE);
+
+        pay_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String price_string=order_plate.substring(0,4);
+                Double price_service=price_calculate * multiplication_value  * guest_int ;
+            //    int price_convert=Integer.parseInt(price_service);
+
+            //    double final_price=price_convert * multiplication_value;
+                // int int_amount=(int)final_price-599;
+          //      int int_amount=1;
+
+                String amount=String.valueOf(price_service);
+                String note = "Photographer Booking Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String name = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                String upiId = "9890037562@ybl";
+                payUsingUpi(amount, upiId, name, note);
+
+            }
+
+            private void payUsingUpi(String amount, String upiId, String name, String note) {
+                Uri uri = Uri.parse("upi://pay").buildUpon()
+                        .appendQueryParameter("pa", upiId)
+                        .appendQueryParameter("pn", name)
+                        .appendQueryParameter("tn", note)
+                        .appendQueryParameter("am", amount)
+                        .appendQueryParameter("cu", "INR")
+                        .build();
+
+
+                Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
+                upiPayIntent.setData(uri);
+
+                // will always show a dialog to user to choose an app
+                Intent chooser = Intent.createChooser(upiPayIntent, "Pay with");
+
+                // check if intent resolves
+                if(null != chooser.resolveActivity(getPackageManager())) {
+                    startActivityForResult(chooser,UPI_PAYMENT);
+                } else {
+                    Toast.makeText(CateringByIntent.this,"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
 
 
 
@@ -429,6 +535,9 @@ public class CateringByIntent extends AppCompatActivity {
                     else if(guest_no.isEmpty()){
                         Toast.makeText(CateringByIntent.this, "Select No Of Guests", Toast.LENGTH_SHORT).show();
                     }
+                    else if(payment_status.isEmpty()){
+                        Toast.makeText(CateringByIntent.this, "Payment Is Yet To DO", Toast.LENGTH_SHORT).show();
+                    }
                     else if(item_count<5){
                         Toast.makeText(CateringByIntent.this, "Select At Least 5 items For Menu", Toast.LENGTH_SHORT).show();
                     }
@@ -451,7 +560,7 @@ public class CateringByIntent extends AppCompatActivity {
                                 pbar.setVisibility(View.VISIBLE);
 
                                 String status="Submitted ...Waiting To Accpeted ";
-                                String payment_status="Pending";
+
                                 cateringDatabase order = new cateringDatabase(time_string,catering_type,order_plate,time_string_cal,guest_no,string_date,requiring,address,status,payment_status,FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 String path = "Catering_Order_Of_UserId__" + FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 db.getInstance().getReference(path).child(String.valueOf(time)).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -539,39 +648,122 @@ public class CateringByIntent extends AppCompatActivity {
             case R.id.radio_catering1:
                 if (checked)
                     guest_no = "40 To 50 People";
+                guest_int=50;
 
                 break;
             case R.id.radio_catering2:
                 if (checked)
                     guest_no = "80 To 100 People";
+                guest_int=90;
                 break;
             case R.id.radio_catering3:
                 if (checked)
                     guest_no = "150 To 200 People";
+                guest_int=175;
                 break;
             case R.id.radio_catering4:
                 if (checked)
                     guest_no = "300 To 400 People";
+                guest_int=350;
                 break;
-            case R.id.radio_day_1:
+            case R.id.pay_on_delievery_catering:
                 if (checked)
-                    requiring="1 Day";
+                    payment_status="On Delievery";
+
                 break;
-            case R.id.radio_day_2:
+
+            case R.id.pay_upi_catering:
                 if (checked)
-                    requiring="2 Days";
+                    pay_now.setVisibility(View.VISIBLE);
                 break;
-            case R.id.radio_day_3:
-                if (checked)
-                    requiring="3 Days";
-                break;
-            case R.id.radio_day_4:
-                if (checked)
-                    requiring="4 Days";
-                break;
+
+
 
 
         }
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case UPI_PAYMENT:
+                if ((RESULT_OK == resultCode) || (resultCode == 11)) {
+                    if (data != null) {
+                        String trxt = data.getStringExtra("response");
+                        Log.d("UPI", "onActivityResult: " + trxt);
+                        ArrayList<String> dataList = new ArrayList<>();
+                        dataList.add(trxt);
+                        upiPaymentDataOperation(dataList);
+                    } else {
+                        Log.d("UPI", "onActivityResult: " + "Return data is null");
+                        ArrayList<String> dataList = new ArrayList<>();
+                        dataList.add("nothing");
+                        upiPaymentDataOperation(dataList);
+                    }
+                } else {
+                    Log.d("UPI", "onActivityResult: " + "Return data is null"); //when user simply back without payment
+                    ArrayList<String> dataList = new ArrayList<>();
+                    dataList.add("nothing");
+                    upiPaymentDataOperation(dataList);
+                }
+                break;
+        }
+    }
+
+    private void upiPaymentDataOperation(ArrayList<String> data) {
+
+
+
+        if (isConnectionAvailable(CateringByIntent.this)) {
+            String str = data.get(0);
+            Log.d("UPIPAY", "upiPaymentDataOperation: "+str);
+            String paymentCancel = "";
+            if(str == null) str = "discard";
+            String status = "";
+            String approvalRefNo = "";
+            String response[] = str.split("&");
+            for (int i = 0; i < response.length; i++) {
+                String equalStr[] = response[i].split("=");
+                if(equalStr.length >= 2) {
+                    if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
+                        status = equalStr[1].toLowerCase();
+                    }
+                    else if (equalStr[0].toLowerCase().equals("ApprovalRefNo".toLowerCase()) || equalStr[0].toLowerCase().equals("txnRef".toLowerCase())) {
+                        approvalRefNo = equalStr[1];
+                    }
+                }
+                else {
+                    paymentCancel = "Payment cancelled by user.";
+                }
+            }
+
+            if (status.equals("success")) {
+                //Code to handle successful transaction here.
+                Toast.makeText(CateringByIntent.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
+                payment_status="Paid";
+                Log.d("UPI", "responseStr: "+approvalRefNo);
+            }
+            else if("Payment cancelled by user.".equals(paymentCancel)) {
+                Toast.makeText(CateringByIntent.this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(CateringByIntent.this, "Transaction failed.Please try again", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(CateringByIntent.this, "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public static boolean isConnectionAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()
+                    && netInfo.isConnectedOrConnecting()
+                    && netInfo.isAvailable()) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
