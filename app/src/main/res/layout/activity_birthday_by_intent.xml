@@ -50,7 +50,7 @@
            android:layout_marginLeft="50dp"
            android:textColor="#FF3300"
            android:fontFamily="cursive"
-           android:text="Jaan"
+           android:text="ABC "
            ></TextView>
        <LinearLayout
            android:layout_width="match_parent"
