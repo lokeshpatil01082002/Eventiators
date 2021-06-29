@@ -143,8 +143,8 @@ public class NewReg extends AppCompatActivity {
                 if (checkAdd.isEmpty()) {
                     REditAdd.setError("Address Required");
                     REditAdd.requestFocus();
-                } else if (checkDist.isEmpty()) {
-                    REditDist.setError("District Required");
+                } else if (checkDist.isEmpty() || checkDist.length()!=6) {
+                    REditDist.setError("Enter Valid Pin-Code");
                     REditDist.requestFocus();
                 }
                 else if(!checkName.matches("^[a-zA-Z\\s]*$")){

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:fontFamily="cursive"
-        android:text="Welcome Back  "
+        android:text="Welcome  "
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
