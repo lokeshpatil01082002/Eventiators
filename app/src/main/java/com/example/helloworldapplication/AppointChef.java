@@ -52,7 +52,7 @@ public class AppointChef extends AppCompatActivity {
                         j.putExtra("extra_price",intvalue);
 
                         startActivity(j);
-                        finish();
+
 
                     } else if (finalIntI == 1) {
                         Intent j = new Intent(AppointChef.this,CateringByIntent.class );
@@ -60,7 +60,7 @@ public class AppointChef extends AppCompatActivity {
                         j.putExtra("extra_price",70);
 
                         startActivity(j);
-                        finish();
+
 
                     }
                     else if (finalIntI ==2) {
@@ -69,7 +69,7 @@ public class AppointChef extends AppCompatActivity {
                         j.putExtra("extra_price",70);
 
                         startActivity(j);
-                        finish();
+
 
                     }
                     else if (finalIntI == 3) {
@@ -78,7 +78,6 @@ public class AppointChef extends AppCompatActivity {
                         j.putExtra("extra_price",75);
 
                         startActivity(j);
-                        finish();
 
                     }
                 }

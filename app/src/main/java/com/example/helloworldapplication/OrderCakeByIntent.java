@@ -313,8 +313,8 @@ public class OrderCakeByIntent extends AppCompatActivity {
                String note = "Cake Order Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
                String name = "Lokesh Patil";
                String upiId = "7057292479@ybl";
-                String amount_1="1";
-               payUsingUpi(amount_1, upiId, name, note);
+
+               payUsingUpi(amount, upiId, name, note);
            }
 
 
@@ -397,7 +397,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
                     paynow.setVisibility(View.INVISIBLE);
                 tv_amount_bill.setVisibility(View.VISIBLE);
                 tv_account_details.setVisibility(View.VISIBLE);
-                payment_status="Pay To Admi Credential";
+                payment_status="Pay To Admin Credential";
 
                 String price_pay=cake_price.substring(0,3);
 
