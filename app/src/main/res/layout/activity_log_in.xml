@@ -27,15 +27,17 @@
         android:layout_width="match_parent"
         android:background="@drawable/edit_text_border"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="156dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginRight="24dp"
         android:backgroundTint="@android:color/darker_gray"
         android:ems="10"
         android:hint="E-mail Id "
-
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_baseline_email_24"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="#FFFFFF"
@@ -48,14 +50,19 @@
 
     <EditText
         android:id="@+id/editPass"
+
+        android:drawableLeft="@drawable/ic_policy"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_policy"
+
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:backgroundTint="@android:color/darker_gray"
         android:ems="10"
         android:hint="Password"
@@ -70,19 +77,19 @@
 
 
     <CheckBox
+        android:id="@+id/check_box_show_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Show Password"
-        android:textColor="@color/white"
-        android:layout_marginTop="2dp"
-        android:id="@+id/check_box_show_password"
+        android:textColor="#CCCABA"
 
         app:layout_constraintBottom_toTopOf="@+id/forgot"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPass"
-        app:layout_constraintVertical_bias="0.0"></CheckBox>
+        app:layout_constraintVertical_bias="0.409"></CheckBox>
 
     <Button
         android:id="@+id/btNew"
