@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="id12345677"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:id="@+id/admin_new_userid"></TextView>
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="id12345677"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:id="@+id/admin_new_userEmail"></TextView>
