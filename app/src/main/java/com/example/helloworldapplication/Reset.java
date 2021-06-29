@@ -30,26 +30,31 @@ public class Reset extends AppCompatActivity {
         BtReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              String mail_string=ResetMail.getText().toString();
+                String mail_string = ResetMail.getText().toString();
+
+                if (mail_string.isEmpty()) {
+                    ResetMail.setError("Enter the Registered Email Address Here ");
+                } else if (!mail_string.isEmpty()){
 
 
-                mAuth = FirebaseAuth.getInstance();
+                    mAuth = FirebaseAuth.getInstance();
                 mAuth.sendPasswordResetEmail(mail_string).addOnCompleteListener(new OnCompleteListener() {
-                            @Override
+                    @Override
 
-                            public void onComplete(@NonNull Task task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Reset.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                } else {
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
 
-                                    Toast.makeText(Reset.this, "Error !!!"+ task.getException(), Toast.LENGTH_SHORT).show();
-                                    finish();
+                            Toast.makeText(Reset.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
 
-                                }
-                            }
-                        });
+                        } else {
 
+                            Toast.makeText(Reset.this, "Invalid Email Id Entered ..!!!", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    }
+                });
+            }
             }
         });
     }
