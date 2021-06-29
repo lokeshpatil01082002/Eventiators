@@ -88,39 +88,7 @@ public class nav_act_home extends AppCompatActivity {
     }
 
     @Override
-   /* public void onBackPressed() {
 
-
-        super.onBackPressed();
-
-        AlertDialog.Builder builder2=new AlertDialog.Builder(nav_act_home.this);
-        builder2.setTitle("Exit");
-        builder2.setMessage("Do you really want to log-out ?");
-        builder2.setCancelable(false);
-        builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-                FirebaseAuth.getInstance().signOut();
-                finish();
-
-
-
-            }
-        });
-        builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        AlertDialog alert=builder2.create();
-        alert.show();
-
-    }
-
-    */
 
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
