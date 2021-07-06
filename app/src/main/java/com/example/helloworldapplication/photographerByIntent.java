@@ -196,7 +196,7 @@ public class photographerByIntent extends AppCompatActivity {
                String amount=String.valueOf(int_amount);
                String note = "Photographer Booking Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String name = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-               String upiId = "9890037562@ybl";
+               String upiId = "8999971354@ybl";
                 payUsingUpi(amount, upiId, name, note);
 
 

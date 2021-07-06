@@ -312,7 +312,7 @@ public class OrderCakeByIntent extends AppCompatActivity {
 
                String note = "Cake Order Payment Of User -"+FirebaseAuth.getInstance().getCurrentUser().getUid();
                String name = "Lokesh Patil";
-               String upiId = "7057292479@ybl";
+               String upiId = "8999971354@ybl";
 
                payUsingUpi(amount, upiId, name, note);
            }
