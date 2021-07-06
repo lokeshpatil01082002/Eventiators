@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SYSTEM USERS"
+        android:background="@android:color/holo_orange_dark"
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
@@ -19,6 +20,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userList"
         android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

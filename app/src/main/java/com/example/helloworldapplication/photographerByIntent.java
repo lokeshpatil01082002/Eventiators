@@ -78,7 +78,7 @@ public class photographerByIntent extends AppCompatActivity {
         photographer_type = findViewById(R.id.photographer_type);
         photographer_code = findViewById(R.id.photographer_code);
         photographer_price = findViewById(R.id.photographer_Price);
-        photographer_dis = findViewById(R.id.photographer_dis);
+
         photographer_includes = findViewById(R.id.photographer_includes);
         Bundle bundle = getIntent().getExtras();
 
@@ -92,8 +92,7 @@ public class photographerByIntent extends AppCompatActivity {
         String String_photographer_code = getIntent().getExtras().getString("photographer_code");
         photographer_code.setText("Photographer Code :\t" + String_photographer_code);
 
-        String String_photographer_dis = getIntent().getExtras().getString("dis");
-        photographer_dis.setText("Photographer Discription :\n" + String_photographer_dis);
+
 
 
         String String_photographer_price = getIntent().getExtras().getString("price");

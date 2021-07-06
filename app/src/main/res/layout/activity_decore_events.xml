@@ -71,10 +71,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 15000 INR "
+                        android:text="Price Charge : 15000 Rs / Day "
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -119,10 +119,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 20000 INR "
+                        android:text="Price Charge : 20000 Rs / Day "
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -167,10 +167,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 25000 INR "
+                        android:text="Price Charge : 25000 Rs / Day"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -215,10 +215,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 30000 INR "
+                        android:text="Price Charge : 30000 Rs / Day "
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -263,10 +263,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 35000 INR "
+                        android:text="Price Charge : 35000 Rs / Day "
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -311,10 +311,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Price Charge : 50000 INR "
+                        android:text="Price Charge : 50000 Rs / Day"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

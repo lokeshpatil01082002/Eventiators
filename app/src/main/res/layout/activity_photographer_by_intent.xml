@@ -85,22 +85,13 @@
                         android:textColor="@color/black"
                         android:textAlignment="center"/>
 
-                    <TextView
-                        android:id="@+id/photographer_dis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:text="Description Box"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        />
 
                     <TextView
                         android:id="@+id/photographer_includes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
-                        android:text="Description Box"
+                        android:text="Includes"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         />
@@ -135,10 +126,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Select Your Event Date -"
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@color/black"/>
+                            android:textSize="20sp"
+                            android:background="@android:color/holo_orange_dark"
+                            android:text="Select Date Of Your Event" />
+
 
 
 

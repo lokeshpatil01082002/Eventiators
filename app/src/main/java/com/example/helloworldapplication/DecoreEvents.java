@@ -50,7 +50,7 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("resId", R.drawable.premiumdecore);
                         j.putExtra("set_name","Premium Decore Set");
                         j.putExtra("set_code","PDS25");
-                        j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
+                        j.putExtra("dis","These Premium Decore set is all good to decore your event with the premium Receptions Vibes.");
                         j.putExtra("price","25000 Rs.");
                         startActivity(j);
 
@@ -60,7 +60,7 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("resId", R.drawable.royaldecore);
                         j.putExtra("set_name","Royal Decore Set");
                         j.putExtra("set_code","RDS30");
-                        j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
+                        j.putExtra("dis","These Royal  Decore set is all good to decore your event with the Royal Reception Vibes.");
                         j.putExtra("price","30000 Rs.");
                         startActivity(j);
 
@@ -70,7 +70,7 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("resId", R.drawable.stunningdecore);
                         j.putExtra("set_name","Stunning Decore Set ");
                         j.putExtra("set_code","SDS35");
-                        j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
+                        j.putExtra("dis","These Stunning Decore set is all good to decore your event with the Stunning Looks  Receptions Vibes. ");
                         j.putExtra("price","35000 Rs.");
                         startActivity(j);
 
@@ -80,7 +80,7 @@ public class DecoreEvents extends AppCompatActivity {
                         j.putExtra("resId", R.drawable.premiumlightedroyaldecore);
                         j.putExtra("set_name","Premium Lighted Royal Decore Set");
                         j.putExtra("set_code","PLRDS50");
-                        j.putExtra("dis","Classical Decore Set is available with glorious decoration components with classical vibes.It includes pair of celebration chairs and other lightning and designing decorative elements ");
+                        j.putExtra("dis","These Premium Lighted Royal  Decore set is all best to decore your event with the Stuuning royal vibes with the mindblowing sights. ");
                         j.putExtra("price","50000 Rs.");
                         startActivity(j);
 

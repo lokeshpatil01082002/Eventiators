@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".AdminDecoration"
     app:cardElevation="18dp"
     app:cardCornerRadius="5dp"
@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="Decoration Orders"
         android:textColor="@color/black"
+        android:background="@android:color/holo_orange_dark"
         android:textSize="23sp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -28,6 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/darker_gray"
         app:layout_constraintTop_toTopOf="parent" />
 
 

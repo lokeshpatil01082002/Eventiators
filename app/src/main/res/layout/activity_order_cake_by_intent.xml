@@ -144,11 +144,9 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Select Your Event Date -"
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@color/black"/>
-
+                            android:textSize="20sp"
+                            android:background="@android:color/holo_orange_dark"
+                            android:text="Select Date Of Your Event" />
 
 
                         <DatePicker
